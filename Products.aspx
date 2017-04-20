@@ -22,6 +22,9 @@
         else
         { %>
 
+    <%= categoryName %>
+
+
         <div class="single-category-wrapper">
             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceProductCategories" DataKeyNames="Id">
                 <Columns>
