@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 public partial class _Clients : System.Web.UI.Page
 {
-    private SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Project\App_Data\Database.mdf;Integrated Security=True");
+    private SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\ProjectCronus\App_Data\Database.mdf;Integrated Security=True");
     protected void Page_Load(object sender, EventArgs e)
     {
 

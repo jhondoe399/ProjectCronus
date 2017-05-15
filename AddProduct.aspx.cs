@@ -27,7 +27,7 @@ public partial class AddClient : System.Web.UI.Page
 
           
             sql = "INSERT INTO Products (catid, serial, model, gbports) VALUES (@catid, @serial, @model, @gbports)";
-            SqlConnection sqlconnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Project\App_Data\Database.mdf;Integrated Security=True");
+            SqlConnection sqlconnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\ProjectCronus\App_Data\Database.mdf;Integrated Security=True");
             sqlconnection.Open();
             SqlCommand sqlcomm = new SqlCommand(sql, sqlconnection);
             sqlcomm.Parameters.AddWithValue("catid", catid);

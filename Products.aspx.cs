@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
+using System.Configuration;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,36 +19,19 @@ public partial class Products : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        IList<string> urlSegments = HttpRequestExtensions.GetFriendlyUrlSegments(Request);
-        if ( urlSegments.Count > 0)
+        string str = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(str))
         {
-            categoryId = urlSegments[0];
-
-            // Get current category info
-            String sql;
-      
-            sql = "SELECT * from ProductCats";
-            SqlConnection sqlconnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-            sqlconnection.Open();
-            SqlCommand sqlcomm = new SqlCommand(sql, sqlconnection);
-            sqlcomm.Parameters.AddWithValue("categoryId", categoryId);
-
-
-
-            SqlDataReader reader;
-            reader = sqlcomm.ExecuteReader();
-            while (reader.Read()) {
-                categoryName = reader.GetString(reader.GetOrdinal("Name"));
-            }
-
+            SqlCommand cmd = new SqlCommand("SELECT Distinct ([Series]) FROM [Products]", con);
+            con.Open();
+            DropDownListSeries.DataSource = cmd.ExecuteReader();
+            DropDownListSeries.DataBind();
 
 
         }
-        isSingleCategory = categoryId != "0";
 
-        // Add the category id if exists
-        SqlDataSourceProductCategories.SelectParameters.Add("cat_id", categoryId);
     }
 
+
+    
 }
