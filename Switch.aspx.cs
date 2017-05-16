@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
@@ -12,25 +13,57 @@ using System.Data.SqlClient;
 public partial class Products : System.Web.UI.Page
 {
 
-    public bool isSingleCategory = false;
-    public string categoryId = "0";
-    public object categoryData;
-    public string categoryName;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string str = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        using (SqlConnection con = new SqlConnection(str))
+        string Series, GbPorts, sql, str;
+        str = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
+        try
         {
-            SqlCommand cmd = new SqlCommand("SELECT Distinct ([Series]) FROM [Products]", con);
-            SqlCommand cmd2 = new SqlCommand("SELECT [Model] FROM [Products]", con);
-            con.Open();
+            sql = "SELECT Distinct ([Series]) FROM [Products]";
+            SqlConnection sqlconnection = new SqlConnection(str);
+            sqlconnection.Open();
+            SqlCommand cmd = new SqlCommand(sql,sqlconnection);
             DropDownListSeries.DataSource = cmd.ExecuteReader();
             DropDownListSeries.DataBind();
-            DropDownListModel.DataSource = cmd2.ExecuteReader();
-            DropDownListModel.DataBind();
             
         }
+
+        catch (Exception ex)
+        {
+            PageResponse.InnerHtml = "Something went wrong." + ex.Message + "<br>" + ex.Source;
+        }
+
+        try
+        {
+            sql = "SELECT [Model] FROM [Products]";
+            SqlConnection sqlconnection = new SqlConnection(str);
+            sqlconnection.Open();
+            SqlCommand cmd = new SqlCommand(sql, sqlconnection);
+            DropDownListModel.DataSource = cmd.ExecuteReader();
+            DropDownListModel.DataBind();
+
+        }
+
+        catch (Exception ex)
+        {
+            PageResponse.InnerHtml = "Something went wrong." + ex.Message + "<br>" + ex.Source;
+        }
+
+
+        // string str = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        // using (SqlConnection con = new SqlConnection(str))
+        // {
+        //    SqlCommand cmd = new SqlCommand("SELECT Distinct ([Series]) FROM [Products]", con);
+        //    SqlCommand cmd2 = new SqlCommand("SELECT [Model] FROM [Products]", con);
+        //    con.Open();
+        //    DropDownListSeries.DataSource = cmd.ExecuteReader();
+        //    DropDownListSeries.DataBind();
+        //    DropDownListModel.DataSource = cmd2.ExecuteReader();
+        //    DropDownListModel.DataBind();
+        //    
+        // }
 
 
     }

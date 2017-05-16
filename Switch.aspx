@@ -4,7 +4,7 @@
 
 
 
-    <div>
+    <div ID="PageResponse" runat="server">
         <br />
         <asp:GridView ID="GridViewSwitch" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_SwitchView" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
