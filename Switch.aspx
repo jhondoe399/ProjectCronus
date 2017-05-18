@@ -26,7 +26,7 @@
         </asp:SqlDataSource>
         <br />
 
-        <asp:DropDownList ID="DropDownListSeries" runat="server" DataTextField="Series" DataValueField="Series">
+        <asp:DropDownList ID="DropDownListSeries" runat="server" DataTextField="Series" DataValueField="Series" OnSelectedIndexChanged="DropDownListSeries_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:DropDownList ID="DropDownListModel" runat="server" DataTextField="Model" DataValueField="Model">
         </asp:DropDownList>

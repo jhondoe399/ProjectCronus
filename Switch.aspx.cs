@@ -16,32 +16,23 @@ public partial class Products : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string Series, GbPorts, sql, str;
-        str = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        string Series2, GbPorts, sql1, sql2;
+        //str = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
         try
         {
-            sql = "SELECT Distinct ([Series]) FROM [Products]";
-            SqlConnection sqlconnection = new SqlConnection(str);
-            sqlconnection.Open();
-            SqlCommand cmd = new SqlCommand(sql,sqlconnection);
-            DropDownListSeries.DataSource = cmd.ExecuteReader();
-            DropDownListSeries.DataBind();
+            sql1 = "SELECT Distinct ([Series]) FROM [Products]";
             
-        }
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\ProjectCronus\App_Data\Database.mdf;Integrated Security=True;MultipleActiveResultSets=True");
+            con.Open();
+            SqlCommand cmd1 = new SqlCommand(sql1,con);
+            DropDownListSeries.DataSource = cmd1.ExecuteReader();
+            DropDownListSeries.DataBind();
 
-        catch (Exception ex)
-        {
-            PageResponse.InnerHtml = "Something went wrong." + ex.Message + "<br>" + ex.Source;
-        }
-
-        try
-        {
-            sql = "SELECT [Model] FROM [Products]";
-            SqlConnection sqlconnection = new SqlConnection(str);
-            sqlconnection.Open();
-            SqlCommand cmd = new SqlCommand(sql, sqlconnection);
-            DropDownListModel.DataSource = cmd.ExecuteReader();
+            Series2 = DropDownListSeries.SelectedValue;
+            sql2 = "SELECT [Model] FROM [Products] WHERE Series="+"'"+Series2+"'";
+            SqlCommand cmd2 = new SqlCommand(sql2, con);
+            DropDownListModel.DataSource = cmd2.ExecuteReader();
             DropDownListModel.DataBind();
 
         }
@@ -51,6 +42,7 @@ public partial class Products : System.Web.UI.Page
             PageResponse.InnerHtml = "Something went wrong." + ex.Message + "<br>" + ex.Source;
         }
 
+        
 
         // string str = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         // using (SqlConnection con = new SqlConnection(str))
