@@ -48,7 +48,7 @@
         <br />
         <asp:DropDownList ID="DropDownListProducts" runat="server" AutoPostBack="True" DataSourceID="SDS_Products" DataTextField="Series" DataValueField="Series" OnSelectedIndexChanged="DropDownListProducts_SelectedIndexChanged">
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownListGbPorts" runat="server" AutoPostBack="True" DataSourceID="SDS_GbPorts" DataTextField="GbPorts" DataValueField="GbPorts">
+        <asp:DropDownList ID="DropDownListGbPorts" runat="server" AutoPostBack="True" DataSourceID="SDS_GbPorts" DataTextField="GbPorts" DataValueField="GbPorts" OnSelectedIndexChanged="DropDownListGbPorts_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:SqlDataSource ID="SDS_GbPorts" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT DISTINCT [GbPorts] FROM [Products]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SDS_Products" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Distinct ([Series]) FROM [Products]"></asp:SqlDataSource>

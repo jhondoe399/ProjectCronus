@@ -50,5 +50,15 @@ public partial class Products : System.Web.UI.Page
     }
 
 
-    
+
+
+    protected void DropDownListProducts_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void DropDownListGbPorts_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
