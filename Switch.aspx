@@ -6,51 +6,81 @@
 
     <div ID="PageResponse" runat="server">
         <br />
-        <asp:GridView ID="GridViewSwitch" runat="server" AutoGenerateColumns="False" DataSourceID="SDS_SwitchView" CellPadding="4" ForeColor="#333333" GridLines="None">
-            <AlternatingRowStyle BackColor="White" />
-            <Columns>
-                <asp:ImageField DataImageUrlField="Image" HeaderText="Switch" />
-            </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EFF3FB" />
-            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-            <SortedDescendingHeaderStyle BackColor="#4870BE" />
-        </asp:GridView>
-        <asp:SqlDataSource ID="SDS_SwitchView" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [ProductCats] WHERE Id=1">
+
+        <table style="width:650px" border="0" cellspacing="0" class="GridViewStyle">
+            <tr class="HeaderStyle">
+                <th>ID</th>
+                <th>CatId</th>
+                <th>Series</th>
+                <th>Model</th>
+                <th>Serial</th>
+                <th>GbPorts</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <asp:DropDownList ID="ddlSeries" runat="server" AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSoruceSeries" DataTextField="Series" DataValueField="Series">
+                        <asp:ListItem Value="%">All</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlModel" runat="server" AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSourceModel" DataTextField="Model" DataValueField="Model">
+                        <asp:ListItem Value="%">All</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td></td>
+                <td>
+                    <asp:DropDownList ID="ddlGbPorts" runat="server" AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSourceGbPorts" DataTextField="GbPorts" DataValueField="GbPorts">
+                        <asp:ListItem Value="%">All</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <asp:GridView ID="GridViewSwitch" runat="server" 
+                        DataSourceID="sqlDataSourceGridViewSwitch" 
+                        AutoGenerateColumns="False" GridLines="None" ShowHeader="False" DataKeyNames="Id">
+                        <Columns>
+                            <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                            <asp:BoundField DataField="CatId" HeaderText="CatId" SortExpression="CatId" />
+                            <asp:BoundField DataField="Series" HeaderText="Series" SortExpression="Series" />
+                            <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
+                            <asp:BoundField DataField="Serial" HeaderText="Serial" SortExpression="Serial" />
+                            <asp:BoundField DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" />
+                        </Columns>
+                    </asp:GridView>
+                </td>
+            </tr>
+        </table>
+
+        <br />
+
+        <asp:SqlDataSource ID="sqlDataSoruceSeries" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            SelectCommand="SELECT DISTINCT [Series] FROM [Products]">
         </asp:SqlDataSource>
-        <br />
+        
+        <asp:SqlDataSource ID="sqlDataSourceModel" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            SelectCommand="SELECT [Model] FROM [Products]">
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="sqlDataSourceGbPorts" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            SelectCommand="SELECT [GbPorts] FROM [Products]">
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="sqlDataSourceGridViewSwitch" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [GbPorts] FROM [Products]" 
+            FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([GbPorts], 'System.String') like '{2}%'">
+            <FilterParameters>
+                <asp:ControlParameter ControlID="ddlSeries" Name="Series" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlModel" Name="Model" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlGbPorts" Name="GbPorts" PropertyName="SelectedValue" Type="String" />
+            </FilterParameters>
+        </asp:SqlDataSource>
 
-        <asp:DropDownList ID="DropDownListSeries" runat="server"  DataTextField="Series" DataValueField="Series"  OnSelectedIndexChanged="DropDownListSeries_SelectedIndexChanged" AutoPostBack="True" DataSourceID="SDS_Series">
-            <asp:ListItem Selected="True">Select Series</asp:ListItem>
-        </asp:DropDownList>
-        <asp:DropDownList ID="DropDownListModel" runat="server" DataTextField="Model" DataValueField="Model" OnSelectedIndexChanged="DropDownListModel_SelectedIndexChanged" AutoPostBack="True">
-            <asp:ListItem Selected="True">Select Model</asp:ListItem>
-        </asp:DropDownList>
-        <asp:DropDownList ID="DropDownListGbPorts" runat="server" DataTextField="GbPortds" DataValueField="GbPorts">
-            <asp:ListItem Selected="True">Select GbPorts</asp:ListItem>
-        </asp:DropDownList>
 
-        <asp:SqlDataSource ID="SDS_Series" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT DISTINCT [Series] FROM [Products]"></asp:SqlDataSource>
-        <br />
-        <br />
-        <asp:GridView ID="GridViewSwitch" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSourceGridViewSwitch">
-            <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-                <asp:BoundField DataField="CatId" HeaderText="CatId" SortExpression="CatId" />
-                <asp:BoundField DataField="Series" HeaderText="Series" SortExpression="Series" />
-                <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
-                <asp:BoundField DataField="Serial" HeaderText="Serial" SortExpression="Serial" />
-                <asp:BoundField DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" />
-            </Columns>
-        </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceGridViewSwitch" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Products] ORDER BY [Series], [Model], [Serial]" OnSelecting="SqlDataSourceGridViewSwitch_Selecting"></asp:SqlDataSource>
-        <br />
     </div>
 </asp:Content>
 

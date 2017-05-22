@@ -9,8 +9,6 @@ using System.Data.SqlClient;
 
 public partial class Products : System.Web.UI.Page
 {
-
-    public bool isSingleCategory = false;
     public string categoryId = "0";
     public object categoryData;
     public string categoryName;
@@ -36,20 +34,35 @@ public partial class Products : System.Web.UI.Page
 
             SqlDataReader reader;
             reader = sqlcomm.ExecuteReader();
-            while (reader.Read())
+
+            reader.Read();
+            categoryName = reader.GetString(reader.GetOrdinal("Name"));
+
+            //while (reader.Read())
+            //{
+            //    categoryName = reader.GetString(reader.GetOrdinal("Name"));
+            //}
+
+
+        if (categoryId == "Switches")
             {
-                categoryName = reader.GetString(reader.GetOrdinal("Name"));
+                switches.Visible = true;
+            }
+        else
+            {
+                switches.Visible = false;
             }
 
-
-
         }
-        isSingleCategory = categoryId != "0";
 
-        // Add the category id if exists
-        SqlDataSourceProductCategories.SelectParameters.Add("cat_id", categoryId);
+        if (categoryId == "Routers")
+        {
+            routers.Visible = true;
+        }
+        else
+        {
+            routers.Visible = false;
+        }
+
     }
-
-
-
 }
