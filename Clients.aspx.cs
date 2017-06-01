@@ -17,7 +17,12 @@ public partial class _Clients : System.Web.UI.Page
     private SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\ProjectCronus\App_Data\Database.mdf;Integrated Security=True");
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
+
+    protected void AddClient_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/AddClient.aspx");
+    }
 }

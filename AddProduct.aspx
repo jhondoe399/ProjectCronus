@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AddProduct.aspx.cs" Inherits="AddClient" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AddProduct.aspx.cs" Inherits="AddProduct" %>
 
 <asp:Content ID="ContentAddProduct" ContentPlaceHolderID="MainContent" Runat="Server">
     <asp:SqlDataSource ID="SqlDataSourceAddProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Products]">
@@ -10,13 +10,14 @@
             Product Category
         </div>
         <div class="cell_right">
-           <asp:DropDownList ID="ddlCategory" runat="server" AutoPostBack="true" DataTextField="Category">
+           <asp:DropDownList ID="ddlCategory" runat="server" DataTextField="Name" DataSourceID="SqlDataSourceProductCat" DataValueField="Id">
                <asp:ListItem Value="0">Select Product Category</asp:ListItem>
                <asp:ListItem Value="1">Switch</asp:ListItem>
                <asp:ListItem Value="2">Router</asp:ListItem>
                <asp:ListItem Value="3">Server</asp:ListItem>
                <asp:ListItem Value="4">Wireless</asp:ListItem>
            </asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSourceProductCat" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Name], [Id] FROM [ProductCats]"></asp:SqlDataSource>
            <asp:RequiredFieldValidator ID="RequiredFildValidatorProductCategory" runat="server" ErrorMessage="Please Select Category" controlToValidate="ddlCategory" ></asp:RequiredFieldValidator>
         </div>
         <div class="cell_left">

@@ -9,9 +9,9 @@ using System.Data.SqlClient;
 
 public partial class Products : System.Web.UI.Page
 {
-    public string categoryId = "0";
+    public Int32 categoryId = 1;
     public object categoryData;
-    public string categoryName;
+    public String categoryName = "Switches";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -19,50 +19,36 @@ public partial class Products : System.Web.UI.Page
         IList<string> urlSegments = HttpRequestExtensions.GetFriendlyUrlSegments(Request);
         if (urlSegments.Count > 0)
         {
-            categoryId = urlSegments[0];
+            categoryName = urlSegments[0];
 
-            // Get current category info
-            String sql;
-
-            sql = "SELECT * from ProductCats";
-            SqlConnection sqlconnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-            sqlconnection.Open();
-            SqlCommand sqlcomm = new SqlCommand(sql, sqlconnection);
-            sqlcomm.Parameters.AddWithValue("categoryId", categoryId);
-
-
-
-            SqlDataReader reader;
-            reader = sqlcomm.ExecuteReader();
-
-            reader.Read();
-            categoryName = reader.GetString(reader.GetOrdinal("Name"));
-
-            //while (reader.Read())
-            //{
-            //    categoryName = reader.GetString(reader.GetOrdinal("Name"));
-            //}
-
-
-        if (categoryId == "Switches")
-            {
-                switches.Visible = true;
-            }
-        else
+            if (categoryName == null || categoryName.Length == 0)
             {
                 switches.Visible = false;
             }
+            else
+            {
+                switches.Visible = true; 
+                // Get current category info
+                String sql;
 
-        }
+                sql = "SELECT * from ProductCats where Name = @categoryName";
+                SqlConnection sqlconnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+                sqlconnection.Open();
+                SqlCommand sqlcomm = new SqlCommand(sql, sqlconnection);
+                sqlcomm.Parameters.AddWithValue("categoryName", categoryName);
 
-        if (categoryId == "Routers")
-        {
-            routers.Visible = true;
-        }
-        else
-        {
-            routers.Visible = false;
-        }
+                SqlDataReader reader;
+                reader = sqlcomm.ExecuteReader();
 
+                reader.Read();
+                categoryId = reader.GetInt32(reader.GetOrdinal("Id"));
+
+                // update datasource filters
+                sqlDataSourceGridViewSwitch.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                sqlDataSoruceSeries.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                sqlDataSourceModel.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                sqlDataSourceGbPorts.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+            }
+        }
     }
 }

@@ -19,22 +19,20 @@
 
 
 
-<div class="switchview" runat="server" id="switches" visible="false" >
+<div runat="server" id="switches" visible="false">
     <br />
     <p><%= categoryName %></p>
     <br />
 
     <table>
         <tr>
-            <th class="switchId">ID</th>
-            <th class="switchCatId">CatId</th>
+            <th class="switchCatId">Category</th>
             <th class="swtichSeries">Series</th>
             <th class="swtichModel">Model</th>
             <th class="swtichSerial">Serial</th>
             <th class="swtichGbPorts">GbPorts</th>
         </tr>
         <tr>
-            <td class="switchId"></td>
             <td class="switchCatId"></td>
             <td class="swtichSeries">
                 <asp:DropDownList class="swtichSeries" ID="ddlSeries" runat="server" AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSoruceSeries" DataTextField="Series" DataValueField="Series">
@@ -59,7 +57,6 @@
                     DataSourceID="sqlDataSourceGridViewSwitch" AutoGenerateColumns="false"
                     GridLines="None" ShowHeader="False" DataKeyNames="Id">
                     <Columns>
-                        <asp:BoundField ItemStyle-Width="50px" DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                         <asp:BoundField ItemStyle-Width="50px" DataField="CatId" HeaderText="CatId" SortExpression="CatId" />
                         <asp:BoundField ItemStyle-Width="300px" DataField="Series" HeaderText="Series" SortExpression="Series" />
                         <asp:BoundField ItemStyle-Width="300px" DataField="Model" HeaderText="Model" SortExpression="Model" />
@@ -75,38 +72,38 @@
 
     <asp:SqlDataSource ID="sqlDataSoruceSeries" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-        SelectCommand="SELECT DISTINCT [Series] FROM [Products]">
+        SelectCommand="SELECT DISTINCT [Series] FROM [Products]  where CatId = @CategoryId">
+        <SelectParameters>
+            <asp:Parameter Name="CategoryId" Type="Int32"/>
+        </SelectParameters>
     </asp:SqlDataSource>
         
     <asp:SqlDataSource ID="sqlDataSourceModel" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-        SelectCommand="SELECT [Model] FROM [Products]">
+        SelectCommand="SELECT [Model] FROM [Products] where CatId = @CategoryId">
+        <SelectParameters>
+            <asp:Parameter Name="CategoryId" Type="Int32"/>
+        </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="sqlDataSourceGbPorts" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-        SelectCommand="SELECT [GbPorts] FROM [Products]">
+        SelectCommand="SELECT distinct [GbPorts] FROM [Products]  where CatId = @CategoryId">
+        <SelectParameters>
+            <asp:Parameter Name="CategoryId" Type="Int32"/>
+        </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="sqlDataSourceGridViewSwitch" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-        SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [GbPorts] FROM [Products]" 
+        SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [GbPorts] FROM [Products] where CatId = @CategoryId" 
         FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([GbPorts], 'System.String') like '{2}%'">
         <FilterParameters>
             <asp:ControlParameter ControlID="ddlSeries" Name="Series" PropertyName="SelectedValue" Type="String" />
             <asp:ControlParameter ControlID="ddlModel" Name="Model" PropertyName="SelectedValue" Type="String" />
             <asp:ControlParameter ControlID="ddlGbPorts" Name="GbPorts" PropertyName="SelectedValue" Type="String" />
         </FilterParameters>
-    </asp:SqlDataSource>
-</div>
-
-<div class="single-category-wrapper2" runat="server" ID="routers" visible="false">
-    <p><%= categoryName %></p>
-    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceProductCategories3" DataKeyNames="Id">
-        <Columns>
-            <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-            <asp:BoundField DataField="Series" HeaderText="Series" SortExpression="Series" />
-        </Columns>
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSourceProductCategories3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Id], [Series] FROM Products">
+         <SelectParameters>
+            <asp:Parameter Name="CategoryId" Type="Int32"/>
+          </SelectParameters>
     </asp:SqlDataSource>
 </div>
 

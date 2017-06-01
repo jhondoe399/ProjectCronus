@@ -42,6 +42,7 @@
                         DataSourceID="sqlDataSourceGridViewSwitch" 
                         AutoGenerateColumns="False" GridLines="None" ShowHeader="False" DataKeyNames="Id">
                         <Columns>
+                            <asp:CommandField ShowSelectButton="True" />
                             <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                             <asp:BoundField DataField="CatId" HeaderText="CatId" SortExpression="CatId" />
                             <asp:BoundField DataField="Series" HeaderText="Series" SortExpression="Series" />

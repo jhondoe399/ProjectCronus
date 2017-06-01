@@ -51,7 +51,19 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Products">Products</a></li>
+
+                         <asp:LoginView ID="LoginViewClients" runat="server">
+                            <AnonymousTemplate>
+                            </AnonymousTemplate>
+
+                            <LoggedInTemplate>
+                               
+    
+                                <li><a runat="server" href="~/Clients">Clients</a></li>
+                                <li><a runat="server" href="~/Purchases">Purchases</a></li>
+                             </LoggedInTemplate>
+                        </asp:LoginView>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">

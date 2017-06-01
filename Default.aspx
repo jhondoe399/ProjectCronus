@@ -8,7 +8,14 @@
 
         <p class="aligncenter">
             <a href="/Products" class="btn btn-primary btn-lg">Products</a>
-            <a href="/Clients" class="btn btn-primary btn-lg">Clients</a>
+            <asp:LoginView ID="LoginViewClients" runat="server">
+                <AnonymousTemplate>
+                </AnonymousTemplate>
+
+                <LoggedInTemplate>
+                            <a href="/Clients" class="btn btn-primary btn-lg">Clients</a>
+                </LoggedInTemplate>
+            </asp:LoginView>
             
 
         </p>
