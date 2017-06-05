@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Cronus eBusiness" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -13,11 +13,10 @@
                 </AnonymousTemplate>
 
                 <LoggedInTemplate>
-                            <a href="/Clients" class="btn btn-primary btn-lg">Clients</a>
+                        <a href="/Clients" class="btn btn-primary btn-lg">Clients</a>
                 </LoggedInTemplate>
             </asp:LoginView>
             
-
         </p>
        
     </div>
