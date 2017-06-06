@@ -23,11 +23,11 @@ public partial class Products : System.Web.UI.Page
 
             if (categoryName == null || categoryName.Length == 0)
             {
-                products.Visible = false;
+                switches.Visible = false;
             }
             else
             {
-                products.Visible = true;
+                switches.Visible = true;
                 // Get current category info
                 String sql;
 
@@ -44,7 +44,7 @@ public partial class Products : System.Web.UI.Page
                 categoryId = reader.GetInt32(reader.GetOrdinal("Id"));
 
                 // update datasource filters
-                sqlDataSourceGridViewProducts.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                sqlDataSourceGridViewSwitches.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                 sqlDataSoruceSeries.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                 sqlDataSourceModel.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                 sqlDataSourceGbPorts.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
@@ -59,13 +59,6 @@ public partial class Products : System.Web.UI.Page
     }
 
 
-    protected void GridViewProducts_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        if (e.CommandName == "Download")
-        {
-            /*your code to download here */
-        }
-    }
 
 }
 

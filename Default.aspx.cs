@@ -11,14 +11,4 @@ public partial class _Default : Page
     {
 
     }
-
-    protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-
-    }
-
-    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
 }

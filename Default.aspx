@@ -6,18 +6,11 @@
     <div class="jumbotron">
         <h1 class="aligncenter mb35">Welcome to Cronus eBusiness</h1>
 
-        <p class="aligncenter">
-            <a href="/Products" class="btn btn-primary btn-lg">Products</a>
-            <asp:LoginView ID="LoginViewClients" runat="server">
-                <AnonymousTemplate>
-                </AnonymousTemplate>
-
-                <LoggedInTemplate>
-                        <a href="/Clients" class="btn btn-primary btn-lg">Clients</a>
-                </LoggedInTemplate>
-            </asp:LoginView>
-            
-        </p>
+        <div class="alignright">
+            <p>Hello, </p>
+            <asp:LoginName runat="server"></asp:LoginName>
+            <asp:LoginStatus runat="server"></asp:LoginStatus>
+        </div>
        
     </div>
 
