@@ -14,6 +14,54 @@ public partial class AddProduct : System.Web.UI.Page
 
     }
 
+    protected void ddlCategory_DataBinding(object sender, EventArgs e)
+    {
+        if (ddlCategory.SelectedValue == "1")
+        {
+            addSwitch.Visible = true;
+            addRouter.Visible = false;
+            addServer.Visible = false;
+            addWireless.Visible = false;
+        }
+    }
+
+    protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCategory.SelectedValue == "1")
+        {
+            addSwitch.Visible = true;
+            addRouter.Visible = false;
+            addServer.Visible = false;
+            addWireless.Visible = false;
+        }
+        
+        else
+            if ( ddlCategory.SelectedValue == "2")
+                {
+                    addSwitch.Visible = false;
+                    addRouter.Visible = true;
+                    addServer.Visible = false;
+                    addWireless.Visible = false;
+                }
+            else
+                if ( ddlCategory.SelectedValue == "3")
+                    {
+                        addSwitch.Visible = false;
+                        addRouter.Visible = false;
+                        addServer.Visible = true;
+                        addWireless.Visible = false;
+                    }
+                else
+                    if (ddlCategory.SelectedValue == "4")
+                    {
+                        addSwitch.Visible = false;
+                        addRouter.Visible = false;
+                        addServer.Visible = false;
+                        addWireless.Visible = true;
+                    }
+    }
+
+
     protected void Submit(object sender, EventArgs e)
     {
 
@@ -50,4 +98,12 @@ public partial class AddProduct : System.Web.UI.Page
         }
         
     }
+
+
+
+
+
+
+
+    
 }

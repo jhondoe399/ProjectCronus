@@ -7,20 +7,22 @@
                 <div class="cell_left">
                 Product Category
                 </div>
-                <div class="cell_right">
-                    <asp:DropDownList ID="ddlCategory" runat="server" DataTextField="Name" DataSourceID="SqlDataSourceProductCat" DataValueField="Id">
-                        <asp:ListItem Value="0">Select Product Category</asp:ListItem>
-                        <asp:ListItem Value="1">Switch</asp:ListItem>
-                        <asp:ListItem Value="2">Router</asp:ListItem>
-                        <asp:ListItem Value="3">Server</asp:ListItem>
-                        <asp:ListItem Value="4">Wireless</asp:ListItem>
+                <div>
+                    <asp:DropDownList ID="ddlCategory" runat="server" AppendDataBoundItems="true" AutoPostBack="true" OnDataBinding="ddlCategory_DataBinding" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged"
+                        DataSourceID="SqlDataSourceProductCategory" DataTextField="Name" DataValueField="Id">
+                        <asp:ListItem Value="%" Selected="True">All</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceProductCat" runat="server" 
+                    <asp:SqlDataSource ID="SqlDataSourceProductCategory" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
                         SelectCommand="SELECT [Name], [Id] FROM [ProductCats]">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddlCategory"  Name="Name" PropertyName="SelectedValue" Type="String" />
+                        </SelectParameters>
                     </asp:SqlDataSource>
-                    <asp:RequiredFieldValidator ID="RequiredFildValidatorProductCategory" runat="server" ErrorMessage="Please Select Category" controlToValidate="ddlCategory" ></asp:RequiredFieldValidator>
                 </div>
+            </div>
+
+            <div class="AddSwitch" runat="server" id="addSwitch" visible="false">
                 <div class="cell_left">
                     Serial:
                 </div>
@@ -49,6 +51,20 @@
                 <asp:SqlDataSource ID="SqlDataSourceAddProduct" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Products]">
                 </asp:SqlDataSource>
             </div>
+
+            <div class="AddRouter" runat="server" id ="addRouter" visible="false">
+                <p>Add Router</p>
+            </div>
+
+            <div class="AddServer" runat="server" id ="addServer" visible="false">
+                <p>Add Server</p>
+            </div>
+
+            <div class="AddWireless" runat="server" id ="addWireless" visible="false">
+                <p>AddWireless</p>
+            </div>
+            
+                
 
 </asp:Content>
 
