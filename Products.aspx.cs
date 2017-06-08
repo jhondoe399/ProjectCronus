@@ -50,9 +50,9 @@ public partial class Products : System.Web.UI.Page
                     sqlDataSoruceSeries.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                     sqlDataSourceModel.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                     sqlDataSourceGbPorts.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                    sqlDataSource100Ports.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                    sqlDataSource1GUplinks.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                    sqlDataSource10GUplinks.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                    sqlDataSourceonehundredorts.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                    sqlDataSourceOneGUplinks.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                    sqlDataSourceTenGUplinks.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                     sqlDataSourcePoe.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
             }
                 else
@@ -78,8 +78,8 @@ public partial class Products : System.Web.UI.Page
                             sqlDataSourceGridViewRouters.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSoruceSeriesRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceModelRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                            sqlDataSource1GbUplinksRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                            sqlDataSource10GbUplinksRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                            sqlDataSourceOneGbUplinksRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                            sqlDataSourceTenGbUplinksRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceRAMRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceFlashRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceNIMRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";

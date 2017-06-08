@@ -60,20 +60,20 @@
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddl100Ports" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSource100Ports" DataTextField="100Ports" DataValueField="100Ports">
+                    <asp:DropDownList ID="ddlonehundredports" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                        DataSourceID="sqlDataSourceonehundredorts" DataTextField="onehundredports" DataValueField="onehundredports">
                         <asp:ListItem Value="%">All</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddl1GUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSource1GUplinks" DataTextField="1GUplinks" DataValueField="1GUplinks">
+                    <asp:DropDownList ID="ddlOneGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                        DataSourceID="sqlDataSourceOneGUplinks" DataTextField="OneGUplinks" DataValueField="OneGUplinks">
                         <asp:ListItem Value="%">All</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddl10GUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSource10GUplinks" DataTextField="10GUplinks" DataValueField="10GUplinks">
+                    <asp:DropDownList ID="ddlTenGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                        DataSourceID="sqlDataSourceTenGUplinks" DataTextField="TenGUplinks" DataValueField="TenGUplinks">
                         <asp:ListItem Value="%">All</asp:ListItem>
                     </asp:DropDownList>
                 </td>
@@ -95,9 +95,9 @@
                             <asp:BoundField ItemStyle-Width="300px" DataField="Model" HeaderText="Model" SortExpression="Model" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="300px" DataField="Serial" HeaderText="Serial" SortExpression="Serial" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="100px" DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="100Ports" HeaderText="100Ports" SortExpression="100Ports" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="1GUplinks" HeaderText="1GUplinks" SortExpression="1GUplinks" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="10GUplinks" HeaderText="10GUplinks" SortExpression="10GUplinks" ></asp:BoundField>
+                            <asp:BoundField ItemStyle-Width="100px" DataField="onehundredports" HeaderText="onehundredports" SortExpression="onehundredports" ></asp:BoundField>
+                            <asp:BoundField ItemStyle-Width="100px" DataField="OneGUplinks" HeaderText="OneGUplinks" SortExpression="OneGUplinks" ></asp:BoundField>
+                            <asp:BoundField ItemStyle-Width="100px" DataField="TenGUplinks" HeaderText="TenGUplinks" SortExpression="TenGUplinks" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="100px" DataField="Poe" HeaderText="Poe" SortExpression="Poe" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="100px" DataField="SoftwareFeature" HeaderText="SoftwareFeature" SortExpression="SoftwareFeature" ></asp:BoundField>
                             <asp:BoundField DataField="SwitchingCapacity" HeaderText="SwitchingCapacity" SortExpression="SwitchingCapacity" />
@@ -135,26 +135,26 @@
             </SelectParameters>
         </asp:SqlDataSource>
 
-        <asp:SqlDataSource ID="sqlDataSource100Ports" runat="server" 
+        <asp:SqlDataSource ID="sqlDataSourceonehundredorts" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [100Ports] FROM [Products]  where CatId = @CategoryId">
+            SelectCommand="SELECT distinct [onehundredports] FROM [Products]  where CatId = @CategoryId">
             <SelectParameters>
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
             </SelectParameters>
         </asp:SqlDataSource>
 
 
-        <asp:SqlDataSource ID="sqlDataSource1GUplinks" runat="server" 
+        <asp:SqlDataSource ID="sqlDataSourceOneGUplinks" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [1GUplinks] FROM [Products]  where CatId = @CategoryId">
+            SelectCommand="SELECT distinct [OneGUplinks] FROM [Products]  where CatId = @CategoryId">
             <SelectParameters>
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
             </SelectParameters>
         </asp:SqlDataSource>
 
-        <asp:SqlDataSource ID="sqlDataSource10GUplinks" runat="server" 
+        <asp:SqlDataSource ID="sqlDataSourceTenGUplinks" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [10GUplinks] FROM [Products]  where CatId = @CategoryId">
+            SelectCommand="SELECT distinct [TenGUplinks] FROM [Products]  where CatId = @CategoryId">
             <SelectParameters>
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
             </SelectParameters>
@@ -171,15 +171,15 @@
 
         <asp:SqlDataSource ID="sqlDataSourceGridViewSwitches" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [GbPorts], [100Ports], [1GUplinks], [10GUplinks], [Poe], [SoftwareFeature], [SwitchingCapacity], [ForwardingCapacity], [Datasheet] FROM [Products] where CatId = @CategoryId" 
-            FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([GbPorts], 'System.String') like '{2}%' and Convert([100Ports], 'System.String') like '{3}%' and Convert([1GUplinks], 'System.String') like '{4}%' and Convert([10GUplinks], 'System.String') like '{5}%' and [Poe] like '{6}%'">
+            SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [GbPorts], [Onehundredports], [OneGUplinks], [TenGUplinks], [Poe], [SoftwareFeature], [SwitchingCapacity], [ForwardingCapacity], [Datasheet] FROM [Products] where CatId = @CategoryId" 
+            FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([GbPorts], 'System.String') like '{2}%' and Convert([Onehundredports], 'System.String') like '{3}%' and Convert([OneGUplinks], 'System.String') like '{4}%' and Convert([TenGUplinks], 'System.String') like '{5}%' and [Poe] like '{6}%'">
             <FilterParameters>
                 <asp:ControlParameter ControlID="ddlSeries" Name="Series" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlModel" Name="Model" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlGbPorts" Name="GbPorts" PropertyName="SelectedValue" Type="String" />
-                <asp:ControlParameter ControlID="ddl100Ports" Name="100Ports" PropertyName="SelectedValue" Type="String" />
-                <asp:ControlParameter ControlID="ddl1GUplinks" Name="1GUplinks" PropertyName="SelectedValue" Type="String" />
-                <asp:ControlParameter ControlID="ddl10GUplinks" Name="10GUplinks" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlonehundredports" Name="Onehundredports" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlOneGUplinks" Name="OneGUplinks" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlTenGUplinks" Name="TenGUplinks" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlPoe" Name="PoE" PropertyName="SelectedValue" Type="String" />
             </FilterParameters>
              <SelectParameters>
@@ -225,14 +225,14 @@
                 </td>
                 <td></td>
                 <td class="router1GbUplinks">
-                    <asp:DropDownList ID="ddl1GbUplinksRouter" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSource1GbUplinksRouter" DataTextField="1GUplinks" DataValueField="1GUplinks">
+                    <asp:DropDownList ID="ddlOneGbUplinksRouter" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
+                        DataSourceID="sqlDataSourceOneGbUplinksRouter" DataTextField="OneGUplinks" DataValueField="OneGUplinks">
                         <asp:ListItem Value="%">All</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddl10GbUplinksRouter" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSource10GbUplinksRouter" DataTextField="10GUplinks" DataValueField="10GUplinks">
+                    <asp:DropDownList ID="ddlTenGbUplinksRouter" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                        DataSourceID="sqlDataSourceTenGbUplinksRouter" DataTextField="TenGUplinks" DataValueField="TenGUplinks">
                         <asp:ListItem Value="%">All</asp:ListItem>
                     </asp:DropDownList>
                 </td>
@@ -279,8 +279,8 @@
                             <asp:BoundField ItemStyle-Width="300px" DataField="Series" HeaderText="Series" SortExpression="Series" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="300px" DataField="Model" HeaderText="Model" SortExpression="Model" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="300px" DataField="Serial" HeaderText="Serial" SortExpression="Serial" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="1GUplinks" HeaderText="1GUplinks" SortExpression="1GUplinks" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="10GUplinks" HeaderText="10GUplinks" SortExpression="10GUplinks" ></asp:BoundField>
+                            <asp:BoundField ItemStyle-Width="100px" DataField="OneGUplinks" HeaderText="OneGUplinks" SortExpression="OneGUplinks" ></asp:BoundField>
+                            <asp:BoundField ItemStyle-Width="100px" DataField="TenGUplinks" HeaderText="TenGUplinks" SortExpression="TenGUplinks" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="100px" DataField="ForwardingCapacity" HeaderText="ForwardingCapacity" SortExpression="ForwardingCapacity" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="100px" DataField="RAM" HeaderText="RAM" SortExpression="RAM" ></asp:BoundField>
                             <asp:BoundField ItemStyle-Width="100px" DataField="Flash" HeaderText="Flash" SortExpression="Flash" ></asp:BoundField>
@@ -312,17 +312,17 @@
             </SelectParameters>
         </asp:SqlDataSource>
 
-        <asp:SqlDataSource ID="sqlDataSource1GbUplinksRouter" runat="server" 
+        <asp:SqlDataSource ID="sqlDataSourceOneGbUplinksRouter" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [1GUplinks] FROM [Products]  where CatId = @CategoryId">
+            SelectCommand="SELECT distinct [OneGUplinks] FROM [Products]  where CatId = @CategoryId">
             <SelectParameters>
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
             </SelectParameters>
         </asp:SqlDataSource>
 
-        <asp:SqlDataSource ID="sqlDataSource10GbUplinksRouter" runat="server" 
+        <asp:SqlDataSource ID="sqlDataSourceTenGbUplinksRouter" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [10GUplinks] FROM [Products]  where CatId = @CategoryId">
+            SelectCommand="SELECT distinct [TenGUplinks] FROM [Products]  where CatId = @CategoryId">
             <SelectParameters>
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
             </SelectParameters>
@@ -371,13 +371,13 @@
 
         <asp:SqlDataSource ID="sqlDataSourceGridViewRouters" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [1GUplinks], [10GUplinks], [ForwardingCapacity], [RAM], [Flash], [NIM], [ESM], [FormFactor], [Datasheet] FROM [Products] where CatId = @CategoryId" 
-            FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([1GUplinks], 'System.String') like '{2}%' and Convert([10GUplinks], 'System.String') like '{3}%' and [RAM] like '{4}%' and [Flash] like '{5}%' and Convert([NIM], 'System.String') like '{6}%' and [ESM] like '{7}%' and [FormFactor] like '{8}%'">
+            SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [OneGUplinks], [TenGUplinks], [ForwardingCapacity], [RAM], [Flash], [NIM], [ESM], [FormFactor], [Datasheet] FROM [Products] where CatId = @CategoryId" 
+            FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([OneGUplinks], 'System.String') like '{2}%' and Convert([TenGUplinks], 'System.String') like '{3}%' and [RAM] like '{4}%' and [Flash] like '{5}%' and Convert([NIM], 'System.String') like '{6}%' and [ESM] like '{7}%' and [FormFactor] like '{8}%'">
             <FilterParameters>
                 <asp:ControlParameter ControlID="ddlSeriesRouter" Name="Series" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlModelRouter" Name="Model" PropertyName="SelectedValue" Type="String" />
-                <asp:ControlParameter ControlID="ddl1GbUplinksRouter" Name="1GUplinks" PropertyName="SelectedValue" Type="String" />
-                <asp:ControlParameter ControlID="ddl10GbUplinksRouter" Name="10GUplinks" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlOneGbUplinksRouter" Name="OneGUplinks" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlTenGbUplinksRouter" Name="TenGUplinks" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlRAMRouter" Name="RAM" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlFlashRouter" Name="Flash" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="ddlNIMRouter" Name="NIM" PropertyName="SelectedValue" Type="String" />
@@ -395,167 +395,7 @@
         <p><%= categoryName %></p>
         <br />
 
-        <table>
-            <tr>
-                <th class="switchCatId">Category</th>
-                <th class="swtichSeries">Series</th>
-                <th class="swtichModel">Model</th>
-                <th class="swtichSerial">Serial</th>
-                <th class="swtichGbPorts">GbPorts</th>
-                <th>100Ports</th>
-                <th>1 Gb Uplinks</th>
-                <th>10 Gb Uplinks</th>
-                <th>PoE</th>
-                <th>Software Feature</th>
-                <th>SwitchingCapacity</th>
-                <th>ForwardingCapacity</th>
-                <th>StackingBandwidth</th>
-                <th>Datasheet</th>
-            </tr>
-            <tr>
-                <td class="switchCatId"></td>
-                <td class="swtichSeries">
-                    <asp:DropDownList class="swtichSeries" ID="DropDownList8" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSoruceSeries" DataTextField="Series" DataValueField="Series">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td class="swtichModel">
-                    <asp:DropDownList  class="swtichModel" ID="DropDownList9" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourceModel" DataTextField="Model" DataValueField="Model">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td class="swtichSerial">
-                <td></td>
-                <td class="swtichGbPorts">
-                    <asp:DropDownList class="swtichGbPorts" ID="DropDownList10" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourceGbPorts" DataTextField="GbPorts" DataValueField="GbPorts">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="DropDownList11" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSource100Ports" 
-                        DataTextField="100Ports" DataValueField="100Ports">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="DropDownList12" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSource1GUplinks" 
-                        DataTextField="1Gb Uplinks" DataValueField="1Gb Uplinks">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="DropDownList13" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSource10GUplinks" 
-                        DataTextField="10Gb Uplinks" DataValueField="10Gb Uplinks">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="DropDownList14" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" DataSourceID="sqlDataSourcePoe" 
-                        DataTextField="PoE" DataValueField="PoE">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="13">
-                    <asp:GridView ID="GridView2" runat="server" 
-                        DataSourceID="sqlDataSourceGridViewSwitches" AutoGenerateColumns="False"
-                        GridLines="None" ShowHeader="False" DataKeyNames="Id">
-                        <Columns>
-                            <asp:BoundField ItemStyle-Width="50px" DataField="CatId" HeaderText="CatId" SortExpression="CatId" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="300px" DataField="Series" HeaderText="Series" SortExpression="Series" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="300px" DataField="Model" HeaderText="Model" SortExpression="Model" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="300px" DataField="Serial" HeaderText="Serial" SortExpression="Serial" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="100Ports" HeaderText="100Ports" SortExpression="100Ports" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="1GUplinks" HeaderText="1GUplinks" SortExpression="1GUplinks" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="10GUplinks" HeaderText="1 Gb Uplinks" SortExpression="10GUplinks" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="PoE" HeaderText="PoE" SortExpression="PoE" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="SoftwareFeature" HeaderText="SoftwareFeature" SortExpression="SoftwareFeature" ></asp:BoundField>
-                            <asp:BoundField DataField="SwitchingCapacity" HeaderText="SwitchingCapacity" SortExpression="SwitchingCapacity" />
-                            <asp:BoundField DataField="ForwardingCapacity" HeaderText="ForwardingCapacity" SortExpression="ForwardingCapacity" />
-                            <asp:HyperLinkField DataNavigateUrlFields="Datasheet" DataTextField="Datasheet" DataTextFormatString="Datasheet" />
-                        </Columns>
-                    </asp:GridView>
-                </td>
-            </tr>
-        </table>
-
-        <br />
-
-        <asp:SqlDataSource ID="SqlDataSource9" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT DISTINCT [Series] FROM [Products]  where CatId = @CategoryId">
-            <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-            </SelectParameters>
-        </asp:SqlDataSource>
         
-        <asp:SqlDataSource ID="sqlDataSource10" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT [Model] FROM [Products] where CatId = @CategoryId">
-            <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-        <asp:SqlDataSource ID="sqlDataSource11" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [GbPorts] FROM [Products]  where CatId = @CategoryId">
-            <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-        <asp:SqlDataSource ID="sqlDataSource12" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [100Ports] FROM [Products]  where CatId = @CategoryId">
-            <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-
-        <asp:SqlDataSource ID="sqlDataSource13" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [1GUplinks] FROM [Products]  where CatId = @CategoryId">
-            <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-        <asp:SqlDataSource ID="sqlDataSource14" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [10GUplinks] FROM [Products]  where CatId = @CategoryId">
-            <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-        <asp:SqlDataSource ID="sqlDataSource15" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT distinct [Poe] FROM [Products]  where CatId = @CategoryId">
-            <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-
-        <asp:SqlDataSource ID="sqlDataSource16" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [GbPorts], [100Ports], [1GUplinks], [10GUplinks], [PoE], [SoftwareFeature], [SwitchingCapacity], [ForwardingCapacity], [Datasheet] FROM [Products] where CatId = @CategoryId" 
-            FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([GbPorts], 'System.String') like '{2}%'">
-            <FilterParameters>
-                <asp:ControlParameter ControlID="ddlSeries" Name="Series" PropertyName="SelectedValue" Type="String" />
-                <asp:ControlParameter ControlID="ddlModel" Name="Model" PropertyName="SelectedValue" Type="String" />
-                <asp:ControlParameter ControlID="ddlGbPorts" Name="GbPorts" PropertyName="SelectedValue" Type="String" />
-            </FilterParameters>
-             <SelectParameters>
-                <asp:Parameter Name="CategoryId" Type="Int32"/>
-              </SelectParameters>
-        </asp:SqlDataSource>
     </div>
 
     <div runat="server" id="wireless" visible="false">
