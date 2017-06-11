@@ -25,6 +25,8 @@ public partial class Products : System.Web.UI.Page
                 {
                     switches.Visible = false;
                     routers.Visible = false;
+                    servers.Visible = false;
+                    wireless.Visible = false;
                 }
             else
                 if (categoryName == "Switches")

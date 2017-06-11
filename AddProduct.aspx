@@ -373,13 +373,140 @@
 
     </div>
 
-            <div class="AddServer" runat="server" id ="addServer" visible="false">
-                <h1>Add Server</h1>
-            </div>
+    <div class="AddServer" runat="server" id ="addServer" visible="false">
+        <h1>Add Server</h1>
+    </div>
 
-            <div class="AddWireless" runat="server" id ="addWireless" visible="false">
-                <p>AddWireless</p>
-            </div>
+    <div class="AddWireless" runat="server" id ="addWireless" visible="false">
+        <h1>AddWireless</h1>
+         <div class="cell_left">
+             Series:
+        </div>
+        <div class="cell_right">
+            <asp:TextBox ID="TextBoxSeriesWireless" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            Model:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxModelWireless" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            Serial:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxSerialWireless" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            Type:
+        </div>
+        <div>
+            <asp:DropDownList ID="ddlTypeWireless" runat="server">
+                <asp:ListItem>Indoor</asp:ListItem>
+                <asp:ListItem>Outdoor</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div>
+            Gigabit Ports:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxGbPortsWireless" TextMode="Number" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            Power over Ethernet:
+        </div>
+        <div>
+            <asp:DropDownList ID="ddlPoeWireless" runat="server">
+                <asp:ListItem>Yes</asp:ListItem>
+                <asp:ListItem>No</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div>
+            Power over Ethernet Power:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxPoePowerWireless" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            802.11n:
+        </div>
+        <div>
+            <asp:DropDownList ID="ddlProtocolNWireless" runat="server">
+                <asp:ListItem>Yes</asp:ListItem>
+                <asp:ListItem>No</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div>
+            802.11ac:
+        </div>
+        <div>
+            <asp:DropDownList ID="ddlProtocolACWireless" runat="server">
+                <asp:ListItem>Yes</asp:ListItem>
+                <asp:ListItem>No</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div>
+            802.11ac wave 2:
+        </div>
+        <div>
+            <asp:DropDownList ID="ddlProtocolACwaveWireless" runat="server">
+                <asp:ListItem>Yes</asp:ListItem>
+                <asp:ListItem>No</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div>
+            2.4 GHz:
+        </div>
+        <div>
+            <asp:DropDownList ID="ddlSpectrum1Wireless" runat="server">
+                <asp:ListItem>Yes</asp:ListItem>
+                <asp:ListItem>No</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div>
+            5 GHz:
+        </div>
+        <div>
+            <asp:DropDownList ID="ddlSpectrum2Wireless" runat="server">
+                <asp:ListItem>Yes</asp:ListItem>
+                <asp:ListItem>No</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div>
+            Mimo:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxMIMOWireless" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            Spatial Streams:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxSpatialStreamsWireless" TextMode="Number" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            Maximum Data Rate:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxMaxDataRateWireless" runat="server"></asp:TextBox>
+        </div>
+        <div>
+            Maximum Transmit Power:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxMaxTransmitPowerWireless" TextMode="Number" runat="server"></asp:TextBox> (dBm)
+        </div>
+        <div>
+            Datasheet:
+        </div>
+        <div>
+            <asp:TextBox ID="TextBoxDatasheetWireless" runat="server"></asp:TextBox>
+        </div>
+
+        <asp:Button ID="ButtonWireless" runat="server" Text="Add Product" OnClick="SubmitWireless" />
+
+        
+    </div>
             
                 
 
