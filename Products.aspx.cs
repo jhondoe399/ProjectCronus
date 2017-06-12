@@ -89,10 +89,9 @@ public partial class Products : System.Web.UI.Page
                             sqlDataSourceFormFactorRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
             }
                     else
-                        if (categoryName == "Wireless")
+                        if (categoryName == "Servers")
                             {
-                                wireless.Visible = true;
-                                // Get current category info
+                                servers.Visible = true;
                                 String sql;
 
                                 sql = "SELECT * from ProductCats where Name = @categoryName";
@@ -107,19 +106,48 @@ public partial class Products : System.Web.UI.Page
                                 reader.Read();
                                 categoryId = reader.GetInt32(reader.GetOrdinal("Id"));
 
-                                // update datasource filters
-                                sqlDataSourceGridViewWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSoruceSeriesWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSourceModelWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSourceTypeWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSource24GHzWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSource5GHzWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSource802nWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSource802ac1Wireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSource802ac2Wireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSourceMIMOWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                                sqlDataSourceSpatialStreamsWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-            }
+                // update datasource filters
+                                sqlDataSourceGridViewServers.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSoruceSeriesServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceModelServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceFormFactorServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceMemorySlotsServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceMezanineAdapterSlotsServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceDiskDrivesServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceUCSManagerServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                            }
+                        else
+                            if (categoryName == "Wireless")
+                                {
+                                    wireless.Visible = true;
+                                    // Get current category info
+                                    String sql;
+
+                                    sql = "SELECT * from ProductCats where Name = @categoryName";
+                                    SqlConnection sqlconnection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+                                    sqlconnection.Open();
+                                    SqlCommand sqlcomm = new SqlCommand(sql, sqlconnection);
+                                    sqlcomm.Parameters.AddWithValue("categoryName", categoryName);
+
+                                    SqlDataReader reader;
+                                    reader = sqlcomm.ExecuteReader();
+
+                                    reader.Read();
+                                    categoryId = reader.GetInt32(reader.GetOrdinal("Id"));
+
+                                    // update datasource filters
+                                    sqlDataSourceGridViewWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSoruceSeriesWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceModelWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceTypeWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceSpectrum1Wireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceSpectrum2Wireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceProtocolNWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceProtocolACWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceProtocolACwaveWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceMIMOWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                    sqlDataSourceSpatialStreamsWireless.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                }
         }
     }
 
