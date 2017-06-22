@@ -159,5 +159,10 @@ public partial class Products : System.Web.UI.Page
 
 
 
+
+    protected void sqlDataSoruceSeries_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+
+    }
 }
 

@@ -32,14 +32,14 @@
     </asp:SqlDataSource>
 
     <div runat="server">
-        <asp:Button ID="AddClient" runat="server" Text="Add Client" OnClick="AddClient_Click" />
+        <asp:Button ID="AddClient" CssClass="btn btn-default mb35" runat="server" Text="Add Client" OnClick="AddClient_Click" />
 
     </div>
     
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSourceClients" AllowSorting="True" CellPadding="4" ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
-            <asp:ImageField DataAlternateTextField="Image" DataImageUrlField="Image" ControlStyle-Width="200px" />
+            <asp:ImageField DataAlternateTextField="Image" DataImageUrlField="Image" />
             <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
             <asp:BoundField DataField="CUI" HeaderText="CUI" SortExpression="CUI" />

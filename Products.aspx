@@ -2,7 +2,7 @@
 
 <asp:Content ID="ContentProducts" ContentPlaceHolderID="MainContent" Runat="Server" >
     
-    <div class="prodcategs mb35" runat="server">
+    <div class="prodcategs mb35 row" runat="server">
         <asp:Repeater ID="RepeaterProducts" runat="Server" DataSourceID="sqlDataSourceProductCategories">
             <ItemTemplate>
                 <div class="col-sm-3 prodimage mb35">
@@ -17,97 +17,99 @@
     </div>
 
     <div runat="server" id="switches" visible="false">
-        <br />
-        <p><%= categoryName %></p>
-        <br />
-
-        <table>
-            <tr>
-                <th class="switchCatId">Category</th>
-                <th class="swtichSeries">Series</th>
-                <th class="swtichModel">Model</th>
-                <th class="swtichSerial">Serial</th>
-                <th class="swtichGbPorts">GbPorts</th>
-                <th>100Ports</th>
-                <th>1 Gb Uplinks</th>
-                <th>10 Gb Uplinks</th>
-                <th>PoE</th>
-                <th>Software Feature</th>
-                <th>SwitchingCapacity</th>
-                <th>ForwardingCapacity</th>
-                <th>StackingBandwidth</th>
-                <th>Datasheet</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <asp:DropDownList ID="ddlSeries" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSoruceSeries" DataTextField="Series" DataValueField="Series">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlModel" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourceModel" DataTextField="Model" DataValueField="Model">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td></td>
-                <td>
-                    <asp:DropDownList ID="ddlGbPorts" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourceGbPorts" DataTextField="GbPorts" DataValueField="GbPorts">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlonehundredports" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourceonehundredorts" DataTextField="onehundredports" DataValueField="onehundredports">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlOneGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourceOneGUplinks" DataTextField="OneGUplinks" DataValueField="OneGUplinks">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlTenGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourceTenGUplinks" DataTextField="TenGUplinks" DataValueField="TenGUplinks">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlPoe" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
-                        DataSourceID="sqlDataSourcePoe" DataTextField="Poe" DataValueField="Poe">
-                        <asp:ListItem Value="%">All</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="13">
-                    <asp:GridView ID="GridViewSwitches" runat="server" 
-                        DataSourceID="sqlDataSourceGridViewSwitches" AutoGenerateColumns="False"
-                        GridLines="None" ShowHeader="False" DataKeyNames="Id">
-                        <Columns>
-                            <asp:BoundField ItemStyle-Width="50px" DataField="CatId" HeaderText="CatId" SortExpression="CatId" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="300px" DataField="Series" HeaderText="Series" SortExpression="Series" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="300px" DataField="Model" HeaderText="Model" SortExpression="Model" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="300px" DataField="Serial" HeaderText="Serial" SortExpression="Serial" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="onehundredports" HeaderText="onehundredports" SortExpression="onehundredports" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="OneGUplinks" HeaderText="OneGUplinks" SortExpression="OneGUplinks" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="TenGUplinks" HeaderText="TenGUplinks" SortExpression="TenGUplinks" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="Poe" HeaderText="Poe" SortExpression="Poe" ></asp:BoundField>
-                            <asp:BoundField ItemStyle-Width="100px" DataField="SoftwareFeature" HeaderText="SoftwareFeature" SortExpression="SoftwareFeature" ></asp:BoundField>
-                            <asp:BoundField DataField="SwitchingCapacity" HeaderText="SwitchingCapacity" SortExpression="SwitchingCapacity" />
-                            <asp:BoundField DataField="ForwardingCapacity" HeaderText="ForwardingCapacity" SortExpression="ForwardingCapacity" />
-                            <asp:HyperLinkField DataNavigateUrlFields="Datasheet" DataTextField="Datasheet" DataTextFormatString="Datasheet" />
-                        </Columns>
-                    </asp:GridView>
-                </td>
-            </tr>
+        <h2 class="subline aligncenter mb35"><%= categoryName %></h2>
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th class="switchCatId">Category</th>
+                    <th class="swtichSeries">Series</th>
+                    <th class="swtichModel">Model</th>
+                    <th class="swtichSerial">Serial</th>
+                    <th class="swtichGbPorts">GbPorts</th>
+                    <th>100Ports</th>
+                    <th>1 Gb Uplinks</th>
+                    <th>10 Gb Uplinks</th>
+                    <th>PoE</th>
+                    <th>Software Feature</th>
+                    <th>SwitchingCapacity</th>
+                    <th>ForwardingCapacity</th>
+                    <th>StackingBandwidth</th>
+                    <th>Datasheet</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>
+                        <asp:DropDownList ID="ddlSeries" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
+                            DataSourceID="sqlDataSoruceSeries" DataTextField="Series" DataValueField="Series">
+                            <asp:ListItem Value="%">All</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlModel" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
+                            DataSourceID="sqlDataSourceModel" DataTextField="Model" DataValueField="Model">
+                            <asp:ListItem Value="%">All</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td></td>
+                    <td>
+                        <asp:DropDownList ID="ddlGbPorts" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
+                            DataSourceID="sqlDataSourceGbPorts" DataTextField="GbPorts" DataValueField="GbPorts">
+                            <asp:ListItem Value="%">All</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlonehundredports" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                            DataSourceID="sqlDataSourceonehundredorts" DataTextField="onehundredports" DataValueField="onehundredports">
+                            <asp:ListItem Value="%">All</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlOneGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                            DataSourceID="sqlDataSourceOneGUplinks" DataTextField="OneGUplinks" DataValueField="OneGUplinks">
+                            <asp:ListItem Value="%">All</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlTenGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                            DataSourceID="sqlDataSourceTenGUplinks" DataTextField="TenGUplinks" DataValueField="TenGUplinks">
+                            <asp:ListItem Value="%">All</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlPoe" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
+                            DataSourceID="sqlDataSourcePoe" DataTextField="Poe" DataValueField="Poe">
+                            <asp:ListItem Value="%">All</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
         </table>
+        <asp:GridView ID="GridViewSwitches" runat="server" 
+                            DataSourceID="sqlDataSourceGridViewSwitches" AutoGenerateColumns="False"
+                            GridLines="None" ShowHeader="False" DataKeyNames="Id">
+                            <Columns>
+                                <asp:BoundField ItemStyle-Width="65px" DataField="CatId" HeaderText="CatId" SortExpression="CatId" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="300px" DataField="Series" HeaderText="Series" SortExpression="Series" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="300px" DataField="Model" HeaderText="Model" SortExpression="Model" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="300px" DataField="Serial" HeaderText="Serial" SortExpression="Serial" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="100px" DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="100px" DataField="onehundredports" HeaderText="onehundredports" SortExpression="onehundredports" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="100px" DataField="OneGUplinks" HeaderText="OneGUplinks" SortExpression="OneGUplinks" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="100px" DataField="TenGUplinks" HeaderText="TenGUplinks" SortExpression="TenGUplinks" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="100px" DataField="Poe" HeaderText="Poe" SortExpression="Poe" ></asp:BoundField>
+                                <asp:BoundField ItemStyle-Width="100px" DataField="SoftwareFeature" HeaderText="SoftwareFeature" SortExpression="SoftwareFeature" ></asp:BoundField>
+                                <asp:BoundField DataField="SwitchingCapacity" HeaderText="SwitchingCapacity" SortExpression="SwitchingCapacity" />
+                                <asp:BoundField DataField="ForwardingCapacity" HeaderText="ForwardingCapacity" SortExpression="ForwardingCapacity" />
+                                <asp:HyperLinkField DataNavigateUrlFields="Datasheet" DataTextField="Datasheet" DataTextFormatString="Datasheet" />
+                            </Columns>
+                        </asp:GridView>
 
         <br />
 
@@ -115,7 +117,7 @@
 
         <asp:SqlDataSource ID="sqlDataSoruceSeries" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-            SelectCommand="SELECT DISTINCT [Series] FROM [Products]  where CatId = @CategoryId">
+            SelectCommand="SELECT DISTINCT [Series] FROM [Products]  where CatId = @CategoryId" OnSelecting="sqlDataSoruceSeries_Selecting">
             <SelectParameters>
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
             </SelectParameters>
@@ -191,15 +193,16 @@
 
         </div>
 
-        <asp:GridView ID="GridViewSwitchesCont" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceSwitchesCont" Width="259px">
+        <h3 class="subline aligncenter mb35">Other specifications</h3>
+        <asp:GridView ID="GridViewSwitchesCont" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceSwitchesCont">
             <Columns>
                 <asp:BoundField DataField="CatId" HeaderText="CatId" SortExpression="CatId" />
                 <asp:BoundField DataField="Series" HeaderText="Series" SortExpression="Series" />
                 <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
-                <asp:BoundField DataField="MACAdresses" HeaderText="MACAdresses" SortExpression="MACAdresses" />
-                <asp:BoundField DataField="Ipv4Routes" HeaderText="Ipv4Routes" SortExpression="Ipv4Routes" />
+                <asp:BoundField DataField="MACAdresses" HeaderText="MAC Adresses" SortExpression="MACAdresses" />
+                <asp:BoundField DataField="Ipv4Routes" HeaderText="Ipv4 Routes" SortExpression="Ipv4Routes" />
                 <asp:BoundField DataField="Stacking" HeaderText="Stacking" SortExpression="Stacking" />
-                <asp:BoundField DataField="StackingBandwidth" HeaderText="StackingBandwidth" SortExpression="StackingBandwidth" />
+                <asp:BoundField DataField="StackingBandwidth" HeaderText="Stacking Bandwidth" SortExpression="StackingBandwidth" />
                 <asp:BoundField DataField="RAM" HeaderText="RAM" SortExpression="RAM" />
                 <asp:BoundField DataField="Flash" HeaderText="Flash" SortExpression="Flash" />
                 <asp:BoundField DataField="VlanIDs" HeaderText="VlanIDs" SortExpression="VlanIDs" />
@@ -223,10 +226,7 @@
     </div>
 
     <div runat="server" id="routers" visible="false">
-        <br />
-        <p><%= categoryName %></p>
-        <br />
-
+        <h2 class="subline aligncenter mb35"><%= categoryName %></h2>
         <table>
             <tr>
                 <th>Category</th>
@@ -427,7 +427,7 @@
         </div>
         
         <div>
-            <asp:GridView ID="GridViewRoutersCont" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceRoutersCont" Width="208px">
+            <asp:GridView ID="GridViewRoutersCont" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceRoutersCont">
                 <Columns>
                     <asp:BoundField DataField="CatId" HeaderText="CatId" SortExpression="CatId" />
                     <asp:BoundField DataField="Series" HeaderText="Series" SortExpression="Series" />
@@ -452,9 +452,7 @@
     </div>
 
     <div runat="server" id="servers" visible="false">
-        <br />
-        <p><%= categoryName %></p>
-        <br />
+        <h2 class="subline aligncenter mb35"><%= categoryName %></h2>
         <table>
             <tr>
                 <th>ID</th>
@@ -543,10 +541,6 @@
             </tr>
         </table>
 
-        <br />
-
-        <div>
-
         <asp:SqlDataSource ID="sqlDataSoruceSeriesServer" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
             SelectCommand="SELECT DISTINCT [Series] FROM [Products]  where CatId = @CategoryId">
@@ -578,7 +572,6 @@
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
             </SelectParameters>
         </asp:SqlDataSource>
-
 
         <asp:SqlDataSource ID="sqlDataSourceMezanineAdapterSlotsServer" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
@@ -625,61 +618,47 @@
                 <asp:ControlParameter ControlID="DropDownListDiskDrivesServer" Name="DiskDrives" PropertyName="SelectedValue" Type="String" />
                 <asp:ControlParameter ControlID="DropDownListUCSManagerServer" Name="UCSManager" PropertyName="SelectedValue" Type="String" />
             </FilterParameters>
-             <SelectParameters>
+                <SelectParameters>
                 <asp:Parameter Name="CategoryId" Type="Int32"/>
-              </SelectParameters>
+                </SelectParameters>
         </asp:SqlDataSource>
-        </div>
 
-        </div>
-        </div>
-
-    <asp:Table ID="Table1" runat="server" Height="78px" Width="303px">
-        <asp:TableHeaderRow>
-            <asp:TableCell>Servers</asp:TableCell>
-        </asp:TableHeaderRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                
-            </asp:TableCell>
-        </asp:TableRow>
-
-    </asp:Table>
-
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceServers2">
         <Columns>
-            <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-            <asp:BoundField DataField="CatId" HeaderText="CatId" SortExpression="CatId" />
-            <asp:BoundField DataField="Series" HeaderText="Series" SortExpression="Series" />
             <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
-            <asp:BoundField DataField="FormFactor" HeaderText="FormFactor" SortExpression="FormFactor" />
-            <asp:BoundField DataField="MaxInternalStorage" HeaderText="MaxInternalStorage" SortExpression="MaxInternalStorage" />
-            <asp:BoundField DataField="MezanineAdapterSlots" HeaderText="MezanineAdapterSlots" SortExpression="MezanineAdapterSlots" />
-            <asp:BoundField DataField="DiskDrives" HeaderText="DiskDrives" SortExpression="DiskDrives" />
-            <asp:BoundField DataField="UCSManager" HeaderText="UCSManager" SortExpression="UCSManager" />
-            <asp:BoundField DataField="ProcessorFamily" HeaderText="ProcessorFamily" SortExpression="ProcessorFamily" />
-            <asp:BoundField DataField="Processor" HeaderText="Processor" SortExpression="Processor" />
-            <asp:BoundField DataField="ProcessorFreq" HeaderText="ProcessorFreq" SortExpression="ProcessorFreq" />
-            <asp:BoundField DataField="ProcessorCache" HeaderText="ProcessorCache" SortExpression="ProcessorCache" />
-            <asp:BoundField DataField="ProcessorCores" HeaderText="ProcessorCores" SortExpression="ProcessorCores" />
-            <asp:BoundField DataField="MemoryFreq" HeaderText="MemoryFreq" SortExpression="MemoryFreq" />
-            <asp:BoundField DataField="MemorySize" HeaderText="MemorySize" SortExpression="MemorySize" />
-            <asp:BoundField DataField="MemoryPN" HeaderText="MemoryPN" SortExpression="MemoryPN" />
-            <asp:BoundField DataField="MemoryVoltage" HeaderText="MemoryVoltage" SortExpression="MemoryVoltage" />
-            <asp:BoundField DataField="MemoryRanksDIMM" HeaderText="MemoryRanksDIMM" SortExpression="MemoryRanksDIMM" />
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:GridView ID="GridViewProcessorDetails" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSourceProcessorDetails">
+                        <Columns>
+                            <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                            <asp:BoundField DataField="ProductID" HeaderText="ProductID" SortExpression="ProductID" />
+                            <asp:BoundField DataField="ProcessorFamily" HeaderText="ProcessorFamily" SortExpression="ProcessorFamily" />
+                            <asp:BoundField DataField="Processor" HeaderText="Processor" SortExpression="Processor" />
+                            <asp:BoundField DataField="ProcessorCores" HeaderText="ProcessorCores" SortExpression="ProcessorCores" />
+                            <asp:BoundField DataField="ProcessorCache" HeaderText="ProcessorCache" SortExpression="ProcessorCache" />
+                            <asp:BoundField DataField="ProcessorFreq" HeaderText="ProcessorFreq" SortExpression="ProcessorFreq" />
+                        </Columns>
+                    </asp:GridView>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Distinct Products.Id, Products.CatId, Products.Series, Products.Model, Products.FormFactor, Products.MaxInternalStorage, Products.MezanineAdapterSlots, Products.DiskDrives, Products.UCSManager, ServerProcessorDetails.ProcessorFamily, ServerProcessorDetails.Processor, ServerProcessorDetails.ProcessorFreq, ServerProcessorDetails.ProcessorCache, ServerProcessorDetails.ProcessorCores, ServerMemoryDetails.MemoryFreq, ServerMemoryDetails.MemorySize, ServerMemoryDetails.MemoryPN, ServerMemoryDetails.MemoryVoltage, ServerMemoryDetails.MemoryRanksDIMM
-FROM Products 
-JOIN ServerProcessorDetails ON ServerProcessorDetails.ProductID = Products.Id
-JOIN ServerMemoryDetails ON ServerMemoryDetails.ProductID = Products.Id"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSourceServers2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Model] FROM [Products] WHERE ([CatId] = @CatId)">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="3" Name="CatId" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="SqlDataSourceProcessorDetails" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                        SelectCommand="SELECT * FROM [ServerProcessorDetails] WHERE ServerProcessorDetails.ProductID = 43">
+    </asp:SqlDataSource>
+
+    </div>
 
     <div runat="server" id="wireless" visible="false">
-        <br />
-        <p><%= categoryName %></p>
-        <br />
-
+        <h2 class="subline aligncenter mb35"><%= categoryName %></h2>
         <div>
         <table>
             <tr>

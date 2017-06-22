@@ -2,16 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-
-    <div class="jumbotron">
-        <h1 class="aligncenter mb35">Welcome to Cronus eBusiness</h1>
-
-        <div class="alignright">
-            <p>Hello, </p>
-            <asp:LoginName runat="server"></asp:LoginName>
-            <asp:LoginStatus runat="server"></asp:LoginStatus>
-        </div>
-       
+    <div class="mainbg">
+        <img src="Content/bg.jpg" />
+        <div class="mainbgText">Welcome to Cronus</div>
     </div>
 
-    </asp:Content>
+</asp:Content>

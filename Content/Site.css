@@ -4,9 +4,30 @@ body {
     padding-bottom: 20px;
 }
 
+a, a:hover, a:active, a:focus {
+    text-decoration:none;
+    color:#000;
+}
+
+a:hover{
+    color:#808080;
+}
+
 img {
     max-width:100%;
     height:auto
+}
+
+table{
+    width: 100%;
+    border-color:#eaeaea;
+}
+table th, table td {
+    padding: 5px 10px;
+}
+
+label{
+    display:block;
 }
 
 /* Wrapping element */
@@ -14,6 +35,7 @@ img {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-top: 80px;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -46,6 +68,14 @@ textarea {
     margin-bottom:35px;
 }
 
+.mb15 {
+    margin-bottom: 15px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
 .prodcategs{
     margin-left:auto;
     margin-right:auto;
@@ -54,13 +84,19 @@ textarea {
 }
 
 .prodimage{
-    width:20%;
-    height:20%;
-    align-content:center;
-    margin-left:auto;
-    margin-right:auto;
+    text-align:center;
     margin-bottom:35px;
     justify-content:center;
+}
+
+.prodimage img {
+    max-width:75%;
+    margin-bottom:15px;
+}
+
+.prodimage {
+    font-size:16px;
+    font-weight:600;
 }
 
 .switchview{
@@ -69,3 +105,70 @@ textarea {
     margin-right:auto;
 }
 
+
+#header {
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow: 3px 3px 3px #f9f9f9;
+}
+
+#header a:hover, #header a:focus {
+    color:#000;
+}
+
+.navbar-nav > li > a {
+    line-height:41px;
+}
+
+h2.subline, h3.subline {
+    position:relative;
+}
+h2.subline:after, h3.subline:after {
+    content: " ";
+    border-bottom: 2px solid #d7130b;
+    position: absolute;
+    bottom: -3px;
+    width: 20px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+#MainContent_LoginViewClients_GridView1 img {
+    max-height:100px;
+    width:auto;
+}
+
+.DeleteButton {
+    color: #ff0d0d;
+}
+
+.EditButton {
+    color: #5c87ec;
+}
+address{
+    font-style:italic;
+    color:#808080
+}
+
+.addProducts input {
+    width: 90%;
+    max-width: 450px;
+}
+
+.mainbg {
+    width: 99vw;
+    position: relative;
+    margin-left: -50vw;
+    margin-top: -100px;
+    left: 50%;
+}
+.mainbgText {
+    position: absolute;
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 50%;
+    left: 50%;
+    font-size: 65px;
+}

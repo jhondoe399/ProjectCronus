@@ -30,11 +30,11 @@
         <div class="cell_left">
             Client Image:
         </div>
-        <div class="cell_right">
+        <div class="cell_right mb15">
             <asp:FileUpload ID="FileUploadImage" runat="server" />
         </div>
         <div>
-            <asp:Button ID="ButtonSubmit" runat="server" Text="Submit" OnClick="Submit"/>
+            <asp:Button CssClass="btn btn-default" ID="ButtonSubmit" runat="server" Text="Submit" OnClick="Submit"/>
         </div>
 
     </div>

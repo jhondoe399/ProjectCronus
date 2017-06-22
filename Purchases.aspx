@@ -14,10 +14,7 @@
     
         <LoggedInTemplate>
     
-            <div runat="server">
-                <asp:Button ID="AddPurchase" runat="server" Text="Add Purchase" OnClick="AddPurchase_Click" />
-
-            </div>
+            <asp:Button CssClass="btn btn-default mb15" ID="AddPurchase" runat="server" Text="Add Purchase" OnClick="AddPurchase_Click" />
 
             <br />
             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourcePurchase">
@@ -29,7 +26,36 @@
                     <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
                     <asp:BoundField DataField="SupportType" HeaderText="SupportType" SortExpression="SupportType" />
                     <asp:BoundField DataField="SupportEndDate" HeaderText="SupportEndDate" SortExpression="SupportEndDate" />
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="EditButton"
+                                            runat="server"
+                                            CssClass="EditButton"
+                                            CommandName="Edit" 
+                                            Text="Edit" />
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:LinkButton ID="UpdateButton"
+                                            runat="server"
+                                            CssClass="UpdateButton"
+                                            CommandName="Update"
+                                            Text="Update" />&nbsp;
+                            <asp:LinkButton ID="Cancel"
+                                            runat="server"
+                                            CssClass="CancelButton"
+                                            CommandName="Cancel"
+                                            Text="Cancel" />
+                        </EditItemTemplate>
+                       </asp:TemplateField>
+                   <asp:TemplateField>
+         <ItemTemplate>
+           <asp:LinkButton ID="DeleteButton"
+                        CssClass="DeleteButton"
+                        Text="Delete"
+                        CommandName="Delete" 
+                        runat="server" />
+         </ItemTemplate>
+     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSourcePurchase" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
