@@ -3,8 +3,11 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="mainbg">
-        <img src="Content/bg.jpg" />
+        <img src="Content/bg2.jpg" />
         <div class="mainbgText">Welcome to Cronus</div>
+        <div class="mainbgText2">
+            <span>Outstanding Professional Services</span>
+        </div>
     </div>
 
 </asp:Content>
