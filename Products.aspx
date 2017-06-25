@@ -18,99 +18,98 @@
 
     <div runat="server" id="switches" visible="false">
         <h2 class="subline aligncenter mb35"><%= categoryName %></h2>
-        <table class="table-bordered">
+        <table class="fixedTable productTable">
             <thead>
                 <tr>
-                    <th class="switchCatId">Category</th>
-                    <th class="swtichSeries">Series</th>
-                    <th class="swtichModel">Model</th>
-                    <th class="swtichSerial">Serial</th>
-                    <th class="swtichGbPorts">GbPorts</th>
-                    <th>100Ports</th>
-                    <th>1 Gb Uplinks</th>
-                    <th>10 Gb Uplinks</th>
-                    <th>PoE</th>
-                    <th>Software Feature</th>
-                    <th>SwitchingCapacity</th>
-                    <th>ForwardingCapacity</th>
-                    <th>StackingBandwidth</th>
-                    <th>Datasheet</th>
+                    <th class="switchCatId smallCell">Category</th>
+                    <th class="swtichSeries largeCell">Series</th>
+                    <th class="swtichModel extralargeCell">Model</th>
+                    <th class="swtichSerial largeCell">Serial</th>
+                    <th class="swtichGbPorts smallCell">GbPorts</th>
+                    <th class="smallCell">100Ports</th>
+                    <th class="smallCell">1 Gb Uplinks</th>
+                    <th class="smallCell">10 Gb Uplinks</th>
+                    <th class="smallCell">PoE</th>
+                    <th class="mediumCell">Software Feature</th>
+                    <th class="mediumCell">Switching Capacity</th>
+                    <th class="mediumCell">Forwarding Capacity</th>
+                    <th class="mediumCell">Datasheet</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td></td>
-                    <td>
+                    <td class="smallCell"></td>
+                    <td class="largeCell">
                         <asp:DropDownList ID="ddlSeries" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
                             DataSourceID="sqlDataSoruceSeries" DataTextField="Series" DataValueField="Series">
                             <asp:ListItem Value="%">All</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td>
+                    <td class="extralargeCell">
                         <asp:DropDownList ID="ddlModel" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
                             DataSourceID="sqlDataSourceModel" DataTextField="Model" DataValueField="Model">
                             <asp:ListItem Value="%">All</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td></td>
-                    <td>
+                    <td class="largeCell"></td>
+                    <td class="smallCell">
                         <asp:DropDownList ID="ddlGbPorts" runat="server" AppendDataBoundItems="true" AutoPostBack="true" 
                             DataSourceID="sqlDataSourceGbPorts" DataTextField="GbPorts" DataValueField="GbPorts">
                             <asp:ListItem Value="%">All</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td>
+                    <td class="smallCell">
                         <asp:DropDownList ID="ddlonehundredports" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
                             DataSourceID="sqlDataSourceonehundredorts" DataTextField="onehundredports" DataValueField="onehundredports">
                             <asp:ListItem Value="%">All</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td>
+                    <td class="smallCell">
                         <asp:DropDownList ID="ddlOneGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
                             DataSourceID="sqlDataSourceOneGUplinks" DataTextField="OneGUplinks" DataValueField="OneGUplinks">
                             <asp:ListItem Value="%">All</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td>
+                    <td class="smallCell">
                         <asp:DropDownList ID="ddlTenGUplinks" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
                             DataSourceID="sqlDataSourceTenGUplinks" DataTextField="TenGUplinks" DataValueField="TenGUplinks">
                             <asp:ListItem Value="%">All</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td>
+                    <td class="smallCell">
                         <asp:DropDownList ID="ddlPoe" runat="server"  AppendDataBoundItems="true" AutoPostBack="true" 
                             DataSourceID="sqlDataSourcePoe" DataTextField="Poe" DataValueField="Poe">
                             <asp:ListItem Value="%">All</asp:ListItem>
                         </asp:DropDownList>
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="mediumCell"></td>
+                    <td class="mediumCell"></td>
+                    <td class="mediumCell"></td>
+                    <td class="mediumCell"></td>
                 </tr>
             </tbody>
         </table>
         <asp:GridView ID="GridViewSwitches" runat="server" 
-                            DataSourceID="sqlDataSourceGridViewSwitches" AutoGenerateColumns="False"
-                            GridLines="None" ShowHeader="False" DataKeyNames="Id">
-                            <Columns>
-                                <asp:BoundField ItemStyle-Width="65px" DataField="CatId" HeaderText="CatId" SortExpression="CatId" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="300px" DataField="Series" HeaderText="Series" SortExpression="Series" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="300px" DataField="Model" HeaderText="Model" SortExpression="Model" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="300px" DataField="Serial" HeaderText="Serial" SortExpression="Serial" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="100px" DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="100px" DataField="onehundredports" HeaderText="onehundredports" SortExpression="onehundredports" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="100px" DataField="OneGUplinks" HeaderText="OneGUplinks" SortExpression="OneGUplinks" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="100px" DataField="TenGUplinks" HeaderText="TenGUplinks" SortExpression="TenGUplinks" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="100px" DataField="Poe" HeaderText="Poe" SortExpression="Poe" ></asp:BoundField>
-                                <asp:BoundField ItemStyle-Width="100px" DataField="SoftwareFeature" HeaderText="SoftwareFeature" SortExpression="SoftwareFeature" ></asp:BoundField>
-                                <asp:BoundField DataField="SwitchingCapacity" HeaderText="SwitchingCapacity" SortExpression="SwitchingCapacity" />
-                                <asp:BoundField DataField="ForwardingCapacity" HeaderText="ForwardingCapacity" SortExpression="ForwardingCapacity" />
-                                <asp:HyperLinkField DataNavigateUrlFields="Datasheet" DataTextField="Datasheet" DataTextFormatString="Datasheet" />
-                            </Columns>
-                        </asp:GridView>
+            DataSourceID="sqlDataSourceGridViewSwitches" AutoGenerateColumns="False"
+            GridLines="None" ShowHeader="False" DataKeyNames="Id"
+            CssClass="fixedTable">
 
+            <Columns>
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="CatId" HeaderText="CatId" SortExpression="CatId" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="largeCell" DataField="Series" HeaderText="Series" SortExpression="Series" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="extralargeCell" DataField="Model" HeaderText="Model" SortExpression="Model" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="largeCell" DataField="Serial" HeaderText="Serial" SortExpression="Serial" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="GbPorts" HeaderText="GbPorts" SortExpression="GbPorts" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="onehundredports" HeaderText="onehundredports" SortExpression="onehundredports" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="OneGUplinks" HeaderText="OneGUplinks" SortExpression="OneGUplinks" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="TenGUplinks" HeaderText="TenGUplinks" SortExpression="TenGUplinks" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="Poe" HeaderText="Poe" SortExpression="Poe" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="mediumCell" DataField="SoftwareFeature" HeaderText="SoftwareFeature" SortExpression="SoftwareFeature" ></asp:BoundField>
+                <asp:BoundField ItemStyle-CssClass="mediumCell" DataField="SwitchingCapacity" HeaderText="SwitchingCapacity" SortExpression="SwitchingCapacity" />
+                <asp:BoundField ItemStyle-CssClass="mediumCell" DataField="ForwardingCapacity" HeaderText="ForwardingCapacity" SortExpression="ForwardingCapacity" />
+                <asp:HyperLinkField ItemStyle-CssClass="mediumCell" DataNavigateUrlFields="Datasheet" DataTextField="Datasheet" DataTextFormatString="Datasheet" />
+            </Columns>
+        </asp:GridView>
         <br />
 
         <div>

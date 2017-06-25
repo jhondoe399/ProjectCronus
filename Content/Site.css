@@ -188,3 +188,30 @@ address{
     background-color: #ffd0d2;
     font-size: 12px;
 }
+
+.smallCell {
+    width: 70px !important;
+    text-align:center; 
+}
+
+.mediumCell {
+    width: 95px !important;
+}
+
+.largeCell {
+    width: 130px !important;
+}
+
+.extralargeCell {
+    width: 200px !important;
+}
+
+.fixedTable {
+    table-layout: fixed;
+}
+
+.productTable th {
+    color: White;
+    background-color: #5D7B9D;
+    font-weight: bold;
+}

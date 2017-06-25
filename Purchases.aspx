@@ -17,7 +17,8 @@
             <asp:Button CssClass="btn btn-default mb15" ID="AddPurchase" runat="server" Text="Add Purchase" OnClick="AddPurchase_Click" />
 
             <br />
-            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourcePurchase">
+            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourcePurchase"  GridLines="None"> 
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                 <Columns>
                     <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="True" />
                     <asp:BoundField DataField="ClientName" HeaderText="ClientName" SortExpression="ClientName" />
