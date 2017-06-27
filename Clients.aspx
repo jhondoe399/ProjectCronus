@@ -36,9 +36,9 @@
 
     </div>
     
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSourceClients" AllowSorting="True" GridLines="None">
+    <asp:GridView ID="GridViewClients" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSourceClients" AllowSorting="True" GridLines="None">
         <Columns>
-            <asp:ImageField DataAlternateTextField="Image" DataImageUrlField="Image" />
+            <asp:ImageField DataAlternateTextField="Image" HeaderText="Logo" DataImageUrlField="Image" />
             <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
             <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
             <asp:BoundField DataField="CUI" HeaderText="CUI" SortExpression="CUI" />

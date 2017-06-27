@@ -5,38 +5,22 @@
     </asp:SqlDataSource>
 
     <div id="PageResponse" runat="server"></div>
-    <div class="table_container">
-        <div class="cell_left">
-            Client name:
-        </div>
-        <div class="cell_right">
-            <asp:TextBox ID="TextBoxClientName" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFildValidatorNumeClient" runat="server" ErrorMessage="Incorrect name" controlToValidate="TextBoxClientName" ></asp:RequiredFieldValidator>
-        </div>
-        <div class="cell_left">
-            Client Adress:
-        </div>
-        <div class="cell_right">
-            <asp:TextBox ID="TextBoxAdress" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidatorAdress" runat="server" ErrorMessage="Incorrect adress" ControlToValidate="TextBoxAdress"></asp:RequiredFieldValidator>
-        </div>
-        <div class="cell_left">
-            Client CUI:
-        </div>
-        <div class="cell_right">
-            <asp:TextBox ID="TextBoxCUI" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidatorCUI" runat="server" ErrorMessage="Incorrect CUI" ControlToValidate="TextBoxCUI"></asp:RequiredFieldValidator>
-        </div>
-        <div class="cell_left">
-            Client Image:
-        </div>
-        <div class="cell_right mb15">
-            <asp:FileUpload ID="FileUploadImage" runat="server" />
-        </div>
-        <div>
-            <asp:Button CssClass="btn btn-default" ID="ButtonSubmit" runat="server" Text="Submit" OnClick="Submit"/>
-        </div>
-
+    <div class="col-md-4 mb15">
+        <asp:Label ID="lblClientName" AssociatedControlID="TextBoxClientName" Text="Client name:" runat="server" ValidateRequestMode="Enabled" />
+        <asp:TextBox ID="TextBoxClientName" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFildValidatorClientName" runat="server" SetFocusOnError="true" ErrorMessage="*Incorrect client name" controlToValidate="TextBoxClientName" ></asp:RequiredFieldValidator>
+        <asp:Label ID="lblClientAdress" AssociatedControlID="TextBoxAdress" Text="Client Adress:" runat="server" ValidateRequestMode="Enabled" />
+        <asp:TextBox ID="TextBoxAdress" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorAdress" runat="server" SetFocusOnError="true" ErrorMessage="*Incorrect adress" ControlToValidate="TextBoxAdress"></asp:RequiredFieldValidator>
+        <asp:Label ID="lblClientCUI" AssociatedControlID="TextBoxCUI" Text="Client CUI:" runat="server" ValidateRequestMode="Enabled" />
+        <asp:TextBox ID="TextBoxCUI" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorCUI" runat="server" ErrorMessage="*Incorrect CUI" ControlToValidate="TextBoxCUI"></asp:RequiredFieldValidator>
+        <asp:Label ID="lblClientImage" runat="server" AssociatedControlID="FileUploadImage" Text="Client Image:" ValidateRequestMode="Enabled" />
+        <asp:FileUpload ID="FileUploadImage" runat="server" />
+    </div>
+    <div class="clearfix" ></div>
+    <div class="col-md-2 aligncenter mb35">
+        <asp:Button CssClass="btn btn-default" ID="ButtonSubmit" runat="server" Text="Submit" OnClick="Submit"/>
     </div>
 
 

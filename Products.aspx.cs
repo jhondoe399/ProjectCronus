@@ -56,6 +56,8 @@ public partial class Products : System.Web.UI.Page
                     sqlDataSourceOneGUplinks.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                     sqlDataSourceTenGUplinks.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                     sqlDataSourcePoe.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+
+                    SqlDataSourceSwitchesCont.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
             }
                 else
                     if (categoryName == "Routers")
@@ -87,6 +89,7 @@ public partial class Products : System.Web.UI.Page
                             sqlDataSourceNIMRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceESMRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceFormFactorRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                            SqlDataSourceRoutersCont.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
             }
                     else
                         if (categoryName == "Servers")
@@ -115,7 +118,10 @@ public partial class Products : System.Web.UI.Page
                                 sqlDataSourceMezanineAdapterSlotsServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                                 sqlDataSourceDiskDrivesServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                                 sqlDataSourceUCSManagerServer.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                            }
+                                sqlDataSourceGridViewServersProcessorDetails.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceGridViewServersMemoryDetails.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+                                sqlDataSourceGridViewServerStorageDetails.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
+            }
                         else
                             if (categoryName == "Wireless")
                                 {

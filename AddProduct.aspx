@@ -3,10 +3,23 @@
 <asp:Content ID="ContentAddProduct" ContentPlaceHolderID="MainContent" Runat="Server">
     
     <div id="PageResponse" runat="server"></div>
+
+    <asp:LoginView ID="LoginViewAddProduct" runat="server">
+        
+        <LoggedInTemplate>
+                 
+        </LoggedInTemplate>
+
+        <AnonymousTemplate>
+            <h3> Please login to view this page</h3>
+            <asp:Literal ID="Failuretext" />
+        </AnonymousTemplate>
+    </asp:LoginView>
+
     <div class="table_container">
-        <div class="cell_left">
-        Product Category
-        </div>
+        <h2>
+        Please Select Product Category
+        </h2>
         <div>
             <asp:DropDownList ID="ddlCategory" runat="server" EnableViewState="true" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged"
                 DataSourceID="SqlDataSourceProductCategory" DataTextField="Name" DataValueField="Id">
@@ -17,58 +30,58 @@
                 SelectCommand="SELECT DISTINCT [Name], [Id] FROM [ProductCats]">
             </asp:SqlDataSource>
         </div>
-    </div>
-    <div class="addProducts">
-        <div class="AddSwitch" runat="server" id="addSwitch" visible="false">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Add switch</h1>
-                </div>
-                <div class="col-md-6">
-                    <asp:Label id="lblSeriesSwitch" AssociatedControlId="txtboxSeriesSwitch" Text="Series:" runat="server" ValidateRequestMode="Enabled"/>
-                    <asp:TextBox ID="txtboxSeriesSwitch" runat="server" ></asp:TextBox>
-                    <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorSeriesSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect series"  Display="Dynamic" ControlToValidate="txtboxSeriesSwitch"></asp:RequiredFieldValidator>
+        <div>
+            <div class="addProducts">
+                <div class="AddSwitch" runat="server" id="addSwitch" visible="false">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Add switch</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <asp:Label id="lblSeriesSwitch" AssociatedControlId="txtboxSeriesSwitch" Text="Series:" runat="server" ValidateRequestMode="Enabled"/>
+                        <asp:TextBox ID="txtboxSeriesSwitch" runat="server" ></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorSeriesSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect series"  Display="Dynamic" ControlToValidate="txtboxSeriesSwitch"></asp:RequiredFieldValidator>
 
-                    <asp:Label id="lblSerialSwitch" AssociatedControlId="txtboxSerialSwitch" Text="Serial:" runat="server" />
-                    <asp:TextBox ID="txtboxSerialSwitch" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorSerialSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect serial" Display="Dynamic" ControlToValidate="txtboxSerialSwitch"></asp:RequiredFieldValidator>
+                        <asp:Label id="lblSerialSwitch" AssociatedControlId="txtboxSerialSwitch" Text="Serial:" runat="server" />
+                        <asp:TextBox ID="txtboxSerialSwitch" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorSerialSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect serial" Display="Dynamic" ControlToValidate="txtboxSerialSwitch"></asp:RequiredFieldValidator>
 
-                    <asp:Label id="lblModelSwitch" AssociatedControlId="txtboxModelSwitch" Text="Model:" runat="server" />
-                    <asp:TextBox ID="txtboxModelSwitch" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorModelSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect model" Display="Dynamic" ControlToValidate="txtboxModelSwitch"></asp:RequiredFieldValidator>
+                        <asp:Label id="lblModelSwitch" AssociatedControlId="txtboxModelSwitch" Text="Model:" runat="server" />
+                        <asp:TextBox ID="txtboxModelSwitch" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorModelSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect model" Display="Dynamic" ControlToValidate="txtboxModelSwitch"></asp:RequiredFieldValidator>
 
-                    <asp:Label id="lblGbPortsSwitch" AssociatedControlId="txtboxGbPortsSwitch" Text="Gigabit Ports:" runat="server" />
-                    <asp:TextBox ID="txtboxGbPortsSwitch" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorGbPortsSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect Gigabit Ports" Display="Dynamic" ControlToValidate="txtboxGbPortsSwitch"></asp:RequiredFieldValidator>
+                        <asp:Label id="lblGbPortsSwitch" AssociatedControlId="txtboxGbPortsSwitch" Text="Gigabit Ports:" runat="server" />
+                        <asp:TextBox ID="txtboxGbPortsSwitch" TextMode="Number" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorGbPortsSwitch" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect Gigabit Ports" Display="Dynamic" ControlToValidate="txtboxGbPortsSwitch"></asp:RequiredFieldValidator>
 
-                    <asp:Label id="lbl100PortsSwitch" AssociatedControlId="txtbox100PortsSwitch" Text="10/100 Ports:" runat="server" />
-                    <asp:TextBox ID="txtbox100PortsSwitch" runat="server"></asp:TextBox>
+                        <asp:Label id="lbl100PortsSwitch" AssociatedControlId="txtbox100PortsSwitch" Text="10/100 Ports:" runat="server" />
+                        <asp:TextBox ID="txtbox100PortsSwitch" TextMode="Number" runat="server"></asp:TextBox>
 
-                    <asp:Label id="lbl1GbPortsSwitch" AssociatedControlId="txtbox1GPortsSwitch" Text="1Gb Uplinks:" runat="server" />
-                    <asp:TextBox ID="txtbox1GPortsSwitch" runat="server"></asp:TextBox>
+                        <asp:Label id="lbl1GbPortsSwitch" AssociatedControlId="txtbox1GPortsSwitch" Text="1Gb Uplinks:" runat="server" />
+                        <asp:TextBox ID="txtbox1GPortsSwitch" TextMode="Number" runat="server"></asp:TextBox>
 
-                    <asp:Label id="lbl10GbPortsSwitch" AssociatedControlId="txtbox10GPortsSwitch" Text="10Gb Uplinks:" runat="server" />
-                    <asp:TextBox ID="txtbox10GPortsSwitch" runat="server"></asp:TextBox>
+                        <asp:Label id="lbl10GbPortsSwitch" AssociatedControlId="txtbox10GPortsSwitch" Text="10Gb Uplinks:" runat="server" />
+                        <asp:TextBox ID="txtbox10GPortsSwitch" TextMode="Number" runat="server"></asp:TextBox>
 
-                    <asp:Label id="lblPoeSwitch" AssociatedControlId="ddlPoeSwitch" Text="Power over Ethernet:" runat="server" />
-                    <asp:DropDownList ID="ddlPoeSwitch" runat="server">
-                        <asp:ListItem Text="Yes" Value="Yes" />
-                        <asp:ListItem Text="No" Value="No" />
-                    </asp:DropDownList>
+                        <asp:Label id="lblPoeSwitch" AssociatedControlId="ddlPoeSwitch" Text="Power over Ethernet:" runat="server" />
+                        <asp:DropDownList ID="ddlPoeSwitch" CssClass="ddlOption" runat="server">
+                            <asp:ListItem Text="Yes" Value="Yes" />
+                            <asp:ListItem Text="No" Value="No" />
+                        </asp:DropDownList>
 
-                    <asp:Label id="lblPoePowerSwitch" AssociatedControlId="txtboxPoePowerSwitch" Text="Power over Ethernet Power:" runat="server" />
-                    <asp:TextBox ID="txtboxPoePowerSwitch" runat="server"></asp:TextBox>
+                        <asp:Label id="lblPoePowerSwitch" AssociatedControlId="txtboxPoePowerSwitch" Text="Power over Ethernet Power:" runat="server" />
+                        <asp:TextBox ID="txtboxPoePowerSwitch" runat="server"></asp:TextBox>
 
-                    <asp:Label id="lblSoftwareFeatureSwitch" AssociatedControlId="txtboxSoftwareFeatureSwitch" Text="Sodftware Feature:" runat="server" />
-                    <asp:TextBox ID="txtboxSoftwareFeatureSwitch" runat="server"></asp:TextBox>
+                        <asp:Label id="lblSoftwareFeatureSwitch" AssociatedControlId="txtboxSoftwareFeatureSwitch" Text="Sodftware Feature:" runat="server" />
+                        <asp:TextBox ID="txtboxSoftwareFeatureSwitch" runat="server"></asp:TextBox>
 
-                    <asp:Label id="lblMACAdressesSwitch" AssociatedControlId="txtboxMACAdressesSwitch" Text="MAC Adresses:" runat="server" />
-                    <asp:TextBox ID="txtboxMACAdressesSwitch" runat="server"></asp:TextBox>
+                        <asp:Label id="lblMACAdressesSwitch" AssociatedControlId="txtboxMACAdressesSwitch" Text="MAC Adresses:" runat="server" />
+                        <asp:TextBox ID="txtboxMACAdressesSwitch" runat="server"></asp:TextBox>
 
-                    <asp:Label id="lblIpv4RoutesSwitch" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                    <asp:TextBox ID="txtboxIpv4RoutesSwitch" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-md-6">
+                        <asp:Label id="lblIpv4RoutesSwitch" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
+                        <asp:TextBox ID="txtboxIpv4RoutesSwitch" TextMode="Number" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="col-md-6">
 
                         <asp:Label id="lblSwitchingCapacitySwitch" AssociatedControlId="txtboxSwitchingCapacitySwitch" Text="Switching Capacity:" runat="server" />
                         <asp:TextBox ID="txtboxSwitchingCapacitySwitch" runat="server"></asp:TextBox>
@@ -78,7 +91,7 @@
                         <asp:TextBox ID="txtboxForwardingCapacitySwitch" runat="server"></asp:TextBox>
 
                         <asp:Label id="lblStackingSwitch" AssociatedControlID="ddlStackingSwitch" Text="Stacking:" runat="server" />
-                        <asp:DropDownList ID="ddlStackingSwitch" runat="server">
+                        <asp:DropDownList ID="ddlStackingSwitch" CssClass="ddlOption" runat="server">
                             <asp:ListItem Text="Yes" Value="Yes" />
                             <asp:ListItem Text="No" Value="No" />
                         </asp:DropDownList>
@@ -96,25 +109,25 @@
                         <asp:TextBox ID="txtboxVlanIDSwitch" runat="server"></asp:TextBox>
 
                         <asp:Label id="lblDHCPSwitch" AssociatedControlId="ddlDHCPSwitch" Text="DHCP:" runat="server" />
-                        <asp:DropDownList ID="ddlDHCPSwitch" runat="server">
+                        <asp:DropDownList ID="ddlDHCPSwitch" CssClass="ddlOption" runat="server">
                             <asp:ListItem Text="Yes" Value="Yes" />
                             <asp:ListItem Text="No" Value="No" />
                         </asp:DropDownList>
 
                         <asp:Label id="lblDTP" AssociatedControlId="ddlDTPSwitch" Text="DTP:" runat="server" />
-                        <asp:DropDownList ID="ddlDTPSwitch" runat="server">
+                        <asp:DropDownList ID="ddlDTPSwitch" CssClass="ddlOption" runat="server">
                             <asp:ListItem Text="Yes" Value="Yes" />
                             <asp:ListItem Text="No" Value="No" />
                         </asp:DropDownList>
 
                         <asp:Label id="lblLACPSwitch" AssociatedControlId="ddlLACPSwitch" Text="LACP:" runat="server" />
-                        <asp:DropDownList ID="ddlLACPSwitch" runat="server">
+                        <asp:DropDownList ID="ddlLACPSwitch" CssClass="ddlOption" runat="server">
                             <asp:ListItem Text="Yes" Value="Yes" />
                             <asp:ListItem Text="No" Value="No" />
                         </asp:DropDownList>
 
                         <asp:Label id="lblVTPSwitch" AssociatedControlId="ddlVTPSwitch" Text="VTP:" runat="server" />
-                        <asp:DropDownList ID="ddlVTPSwitch" runat="server">
+                        <asp:DropDownList ID="ddlVTPSwitch" CssClass="ddlOption" runat="server">
                             <asp:ListItem Text="Yes" Value="Yes" />
                             <asp:ListItem Text="No" Value="No" />
                         </asp:DropDownList>
@@ -124,331 +137,214 @@
                     </div>
                 </div>
                 <div class="col-md-12 aligncenter">
-                    <asp:Button ID="ButtonSubmitSwitch" CssClass=" btn btn-default" runat="server" Text="Submit Switch" OnClick="SubmitSwitch"/>
+                    <asp:Button ID="ButtonSubmitSwitch" CssClass=" btn btn-default" runat="server" Text="Add Product" OnClick="SubmitSwitch"/>
                 </div>
+            </div>
 
+                <div class="AddRouter" runat="server" ID="addRouter" visible="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Add Router</h1>
+                </div>
+                <div class="col-md-6">
+                    <asp:Label id="lblSeriesRouter" AssociatedControlId="txtboxSeriesRouter" Text="Series:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:TextBox ID="txtboxSeriesRouter" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorSeriesRouter" CssClass="RequiredFieldValidator" runat="server" ErrorMessage="*Incorrect series" ControlToValidate="txtboxSeriesRouter"></asp:RequiredFieldValidator>
+
+                    <asp:Label id="lblModelRouter" AssociatedControlId="txtboxModelRouter" Text="Model:" runat="server" />
+                    <asp:TextBox ID="txtboxModelRouter" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorModelRouter" CssClass="RequiredFieldValidator" runat="server" ErrorMessage="*Incorrect model" ControlToValidate="txtboxModelRouter"></asp:RequiredFieldValidator>
+
+                    <asp:Label id="lblSerialRouter" AssociatedControlId="txtboxSerialRouter" Text="Serial:" runat="server" />
+                    <asp:TextBox ID="txtboxSerialRouter" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorSerialRouter" CssClass="RequiredFieldValidator" runat="server" ErrorMessage="*Incorrect serial" ControlToValidate="txtboxSerialRouter"></asp:RequiredFieldValidator>
+
+                    <asp:Label id="lblGbPortsRouter" AssociatedControlId="txtboxGbPortsRouter" Text="Gigabit Ports:" runat="server" />
+                    <asp:TextBox ID="txtboxGbPortsRouter" TextMode="Number" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorGbPortsRouter" CssClass="RequiredFieldValidator" runat="server" ErrorMessage="*Incorrect Gigabit Ports" ControlToValidate="txtboxGbPortsRouter"></asp:RequiredFieldValidator>
+
+                    <asp:Label id="lbl100PortsRouter" AssociatedControlId="txtboxonehundredportsRouter" Text="10/100 Ports:" runat="server" />
+                    <asp:TextBox ID="txtboxonehundredportsRouter" TextMode="Number" runat="server"></asp:TextBox>
+            
+                    <asp:Label id="lblOneGUplinksRouter" AssociatedControlId="txtboxOneGUplinksRouter" Text="1Gb Uplinks:" runat="server" />
+                    <asp:TextBox ID="txtboxOneGUplinksRouter" TextMode="Number" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lbl10GbUplinksRouter" AssociatedControlId="txtboxTenGUplinksRouter" Text="10Gb Uplinks:" runat="server" />
+                    <asp:TextBox ID="txtboxTenGUplinksRouter" TextMode="Number" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblSoftwareFeatureRouter" AssociatedControlId="txtboxSoftwareFeatureRouter" Text="Software Feature:" runat="server" />
+                    <asp:TextBox ID="txtboxSoftwareFeatureRouter" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblForwardingCapacityRouter" AssociatedControlId="txtboxForwardingCapacityRouter" Text="Forwarding Capacity:" runat="server" />
+                    <asp:TextBox ID="txtboxForwardingCapacityRouter" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblRAMRouter" AssociatedControlId="txtboxRAMRouter" Text="RAMs:" runat="server" />
+                    <asp:TextBox ID="txtboxRAMRouter" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblFlashRouter" AssociatedControlId="txtboxFlashRouter" Text="Flash:" runat="server" />
+                    <asp:TextBox ID="txtboxFlashRouter" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblFormFactorRouter" AssociatedControlId="txtboxFormFactorRouter" Text="Form Factor:" runat="server" />
+                    <asp:TextBox ID="txtboxFormFactorRouter" runat="server"></asp:TextBox>
+                </div>
+                <div class="col-md-6">
+                    <asp:Label id="lblNIMRouter" AssociatedControlId="txtboxNIMRouter" Text="Network Interface Modules:" runat="server" />
+                    <asp:TextBox ID="txtboxNIMRouter" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblESMRouter" AssociatedControlId="txtboxESMRouter" Text="Enhanced Service Module:" runat="server" />
+                    <asp:TextBox ID="txtboxESMRouter" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblUSBPortsRouter" AssociatedControlId="txtboxUsbPortsRouter" Text="USB Ports:" runat="server" />
+                    <asp:TextBox ID="txtboxUsbPortsRouter" TextMode="Number" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblRedundandtPowerSupplyRouter" AssociatedControlId="ddlRedundandtPowerSupplyRouter" Text="Redundant Power Supply:" runat="server" />
+                    <asp:DropDownList ID="ddlRedundandtPowerSupplyRouter" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label id="lblIPSecRouter" AssociatedControlId="ddlIPSecRouter" Text="IPSec:" runat="server" />
+                    <asp:DropDownList ID="ddlIPSecRouter" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label id="lblOSPFRouter" AssociatedControlId="ddlOSPFRouter" Text="OSPF:" runat="server" />
+                    <asp:DropDownList ID="ddlOSPFRouter" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label id="lblIsisRouter" AssociatedControlId="ddlIsisRouter" Text="IS-IS:" runat="server" />
+                    <asp:DropDownList ID="ddlIsisRouter" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label id="lblBGPRouter" AssociatedControlId="ddlBGPRouter" Text="BGP:" runat="server" />
+                    <asp:DropDownList ID="ddlBGPRouter" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label id="lblEIGRPRouter" AssociatedControlId="ddlEIGRPRouter" Text="EIGRP:" runat="server" />
+                    <asp:DropDownList ID="ddlEIGRPRouter" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label id="lblESPSlotsRouter" AssociatedControlId="txtboxEspSlotsRouter" Text="ESP Slots:" runat="server" />
+                    <asp:TextBox ID="txtboxEspSlotsRouter" TextMode="Number" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblAirflowRouter" AssociatedControlId="txtboxAirflowRouter" Text="Airflow:" runat="server" />
+                    <asp:TextBox ID="txtboxAirflowRouter" runat="server"></asp:TextBox>
+
+                    <asp:Label id="lblDatasheetRouter" AssociatedControlId="txtboxDatasheetRouter" Text="Datasheet link:" runat="server" />
+                    <asp:TextBox ID="txtboxDatasheetRouter" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="col-md-12 aligncenter">
+                <asp:Button ID="ButtonRouter" CssClass=" btn btn-default" runat="server" Text="Add Product" OnClick="SubmitRouter" />
+            </div>
         </div>
 
-        <div class="AddRouter" runat="server" id ="addRouter" visible="false">
-        
-            <h1>Add Router</h1>
-        
-            <asp:Label id="lblSeriesRouter" AssociatedControlId="txtboxSeriesRouter" Text="Series:" runat="server" />
-            <asp:TextBox ID="txtboxSeriesRouter" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidatorSeriesRouter" runat="server" ErrorMessage="Incorrect series" ControlToValidate="txtboxSeriesRouter"></asp:RequiredFieldValidator>
-
-                <asp:Label id="lblModelRouter" AssociatedControlId="txtboxModelRouter" Text="Model:" runat="server" />
-                <asp:TextBox ID="txtboxModelRouter" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidatorModelRouter" runat="server" ErrorMessage="Incorrect model" ControlToValidate="txtboxModelRouter"></asp:RequiredFieldValidator>
-
-                <asp:Label id="lblSerialRouter" AssociatedControlId="txtboxSerialRouter" Text="Serial:" runat="server" />
-                <asp:TextBox ID="txtboxSerialRouter" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSerialRouter" runat="server" ErrorMessage="Incorrect serial" ControlToValidate="txtboxSerialRouter"></asp:RequiredFieldValidator>
-
-                <asp:Label id="lblGbPortsRouter" AssociatedControlId="txtboxGbPortsRouter" Text="Gigabit Ports:" runat="server" />
-                <asp:TextBox ID="txtboxGbPortsRouter" TextMode="Number" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidatorGbPortsRouter" runat="server" ErrorMessage="Incorrect Gigabit Ports" ControlToValidate="txtboxGbPortsRouter"></asp:RequiredFieldValidator>
-
-                <asp:Label id="lbl100PortsRouter" AssociatedControlId="txtboxonehundredportsRouter" Text="10/100 Ports:" runat="server" />
-                <asp:TextBox ID="txtboxonehundredportsRouter" TextMode="Number" runat="server"></asp:TextBox>
+                <div class="AddServer" runat="server" id ="addServer" visible="false">
+            <div class="row">
+	            <div class="col-md-12">
+                    <h1>Add Server</h1>
+                </div>
             </div>
-            <div class="cell_left">
-            1Gb Uplinks:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label4" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxOneGUplinksRouter" TextMode="Number" runat="server"></asp:TextBox>
-            </div>
-            <div class="cell_left">
-            10Gb Uplinks:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label5" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxTenGUplinksRouter" TextMode="Number" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Software Feature:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label6" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxSoftwareFeatureRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Forwarding Capacity:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label7" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxForwardingCapacityRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            RAM:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label8" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxRAMRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Flash:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label9" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxFlashRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Form Factor:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label10" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxFormFactorRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Network Interface Modules:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label11" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxNIMRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Enhanced Service Module:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label12" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxESMRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            USB Ports:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label13" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxUsbPortsRouter" TextMode="Number" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Redundant Power Supply:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label14" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:DropDownList ID="ddlRedundandtPowerSupplyRouter" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div class="cell_left">
-            IPSec:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label15" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:DropDownList ID="ddlIPSecRouter" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div class="cell_left">
-            OSPF:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label16" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:DropDownList ID="ddlOSPFRouter" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div class="cell_left">
-            IS-IS:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label17" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:DropDownList ID="ddlIsisRouter" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-             <div class="cell_left">
-            BGP:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label18" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:DropDownList ID="ddlBGPRouter" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-             <div class="cell_left">
-            EIGRP:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label19" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:DropDownList ID="ddlEIGRPRouter" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-             <div class="cell_left">
-            ESP Slots:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label20" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxEspSlotsRouter" TextMode="Number" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Airflow:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label21" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxAirflowRouter" runat="server"></asp:TextBox>
-            </div>
-             <div class="cell_left">
-            Datasheet link:
-            </div>
-            <div class="cell_right">
-                <asp:Label id="Label22" AssociatedControlId="txtboxIpv4RoutesSwitch" Text="IPv4 Routes:" runat="server" />
-                <asp:TextBox ID="txtboxDatasheetRouter" runat="server"></asp:TextBox>
-            </div>
-
-            <div>
-            <asp:Button ID="ButtonRouter" runat="server" Text="Submit Router" OnClick="SubmitRouter" />
-            </div>
-
-
-
-
         </div>
 
-        <div class="AddServer" runat="server" id ="addServer" visible="false">
-            <h1>Add Server</h1>
-        </div>
+                <div class="AddWireless" runat="server" id ="addWireless" visible="false">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>AddWireless</h1>
+                </div>
+                <div class="col-md-6">
+                    <asp:Label ID="lblSeriesWireless" AssociatedControlID="TextBoxSeriesWireless" Text="Series:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:TextBox ID="TextBoxSeriesWireless" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorSeriesWirelesss" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect series" Display="Dynamic" ControlToValidate="TextBoxSeriesWireless" />
 
-        <div class="AddWireless" runat="server" id ="addWireless" visible="false">
-            <h1>AddWireless</h1>
-             <div class="cell_left">
-                 Series:
-            </div>
-            <div class="cell_right">
-                <asp:TextBox ID="TextBoxSeriesWireless" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                Model:
-            </div>
-            <div>
+                <asp:Label ID="lblModelWireless" AssociatedControlID="TextBoxModelWireless" Text="Model:" runat="server" ValidateRequestMode="Enabled" />
                 <asp:TextBox ID="TextBoxModelWireless" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                Serial:
-            </div>
-            <div>
+                <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorModelWireless" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect model" Display="Dynamic" ControlToValidate="TextBoxModelWireless" />
+
+                <asp:Label ID="lblSerialWireless" AssociatedControlID="TextBoxSerialWireless" Text="Serial:" runat="server" ValidateRequestMode="Enabled" />
                 <asp:TextBox ID="TextBoxSerialWireless" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                Type:
-            </div>
-            <div>
-                <asp:DropDownList ID="ddlTypeWireless" runat="server">
+                <asp:RequiredFieldValidator CssClass="RequiredFieldValidator" ID="RequiredFieldValidatorSerialWireless" SetFocusOnError="true" runat="server" ErrorMessage="*Incorrect serial" Display="Dynamic" ControlToValidate="TextBoxSerialWireless" />
+
+                <asp:Label ID="lblTypeWireless" AssociatedControlID="ddlTypeWireless" Text="Type:" runat="server" ValidateRequestMode="Enabled" />
+                <asp:DropDownList ID="ddlTypeWireless" CssClass="ddlOption" runat="server">
                     <asp:ListItem>Indoor</asp:ListItem>
                     <asp:ListItem>Outdoor</asp:ListItem>
                 </asp:DropDownList>
-            </div>
-            <div>
-                Gigabit Ports:
-            </div>
-            <div>
+
+                <asp:Label ID="lblGbPortsWireless" AssociatedControlID="TextBoxGbPortsWireless" Text="Gb Ports:" runat="server" ValidateRequestMode="Enabled" />
                 <asp:TextBox ID="TextBoxGbPortsWireless" TextMode="Number" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                Power over Ethernet:
-            </div>
-            <div>
-                <asp:DropDownList ID="ddlPoeWireless" runat="server">
+
+                <asp:Label ID="lblPoeWireless" AssociatedControlID="ddlPoeWireless" Text="Power over Ethernet:" runat="server" ValidateRequestMode="Enabled" />
+                <asp:DropDownList ID="ddlPoeWireless" CssClass="ddlOption" runat="server">
                     <asp:ListItem>Yes</asp:ListItem>
                     <asp:ListItem>No</asp:ListItem>
                 </asp:DropDownList>
-            </div>
-            <div>
-                Power over Ethernet Power:
-            </div>
-            <div>
+
+                <asp:Label ID="lblPoePowerWireless" AssociatedControlID="TextBoxPoePowerWireless" Text="Power over Ethernet Power:" runat="server" ValidateRequestMode="Enabled" />
                 <asp:TextBox ID="TextBoxPoePowerWireless" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                802.11n:
-            </div>
-            <div>
-                <asp:DropDownList ID="ddlProtocolNWireless" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                802.11ac:
-            </div>
-            <div>
-                <asp:DropDownList ID="ddlProtocolACWireless" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                802.11ac wave 2:
-            </div>
-            <div>
-                <asp:DropDownList ID="ddlProtocolACwaveWireless" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                2.4 GHz:
-            </div>
-            <div>
-                <asp:DropDownList ID="ddlSpectrum1Wireless" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                5 GHz:
-            </div>
-            <div>
-                <asp:DropDownList ID="ddlSpectrum2Wireless" runat="server">
-                    <asp:ListItem>Yes</asp:ListItem>
-                    <asp:ListItem>No</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-            <div>
-                Mimo:
-            </div>
-            <div>
-                <asp:TextBox ID="TextBoxMIMOWireless" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                Spatial Streams:
-            </div>
-            <div>
-                <asp:TextBox ID="TextBoxSpatialStreamsWireless" TextMode="Number" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                Maximum Data Rate:
-            </div>
-            <div>
-                <asp:TextBox ID="TextBoxMaxDataRateWireless" runat="server"></asp:TextBox>
-            </div>
-            <div>
-                Maximum Transmit Power:
-            </div>
-            <div>
-                <asp:TextBox ID="TextBoxMaxTransmitPowerWireless" TextMode="Number" runat="server"></asp:TextBox> (dBm)
-            </div>
-            <div>
-                Datasheet:
-            </div>
-            <div>
-                <asp:TextBox ID="TextBoxDatasheetWireless" runat="server"></asp:TextBox>
-            </div>
 
-            <asp:Button ID="ButtonWireless" runat="server" Text="Add Product" OnClick="SubmitWireless" />
+                <asp:Label ID="lblProtocolNWireless" AssociatedControlID="ddlProtocolNWireless" Text="802.11n:" runat="server" ValidateRequestMode="Enabled" />
+                <asp:DropDownList ID="ddlProtocolNWireless" CssClass="ddlOption" runat="server">
+                    <asp:ListItem>Yes</asp:ListItem>
+                    <asp:ListItem>No</asp:ListItem>
+                </asp:DropDownList>
 
-        
+                <asp:Label ID="lblProtocolACWireless" AssociatedControlID="ddlProtocolACWireless" Text="802.11ac:" runat="server" ValidateRequestMode="Enabled" />
+                <asp:DropDownList ID="ddlProtocolACWireless" CssClass="ddlOption" runat="server">
+                    <asp:ListItem>Yes</asp:ListItem>
+                    <asp:ListItem>No</asp:ListItem>
+                </asp:DropDownList>
+                </div>
+                <div class="col-md-6">
+                    <asp:Label ID="lblProtocolACwaveWireless" AssociatedControlID="ddlProtocolACwaveWireless" Text="802.11ac wave 2:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:DropDownList ID="ddlProtocolACwaveWireless" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label ID="lblSpectrum1Wireless" AssociatedControlID="ddlSpectrum1Wireless" Text="2.4 GHz:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:DropDownList ID="ddlSpectrum1Wireless" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label ID="lblSpectrum2Wireless" AssociatedControlID="ddlSpectrum2Wireless" Text="5 GHz:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:DropDownList ID="ddlSpectrum2Wireless" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label ID="lblMIMOWireless" AssociatedControlID="TextBoxMIMOWireless" Text="MIMO:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:TextBox ID="TextBoxMIMOWireless" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="lblSpatialStreamsWireless" AssociatedControlID="TextBoxSpatialStreamsWireless" Text="Spatial Streams:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:TextBox ID="TextBoxSpatialStreamsWireless" TextMode="Number" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="lblMaxDataRateWireless" AssociatedControlID="TextBoxMaxDataRateWireless" Text="Maximum Data Rate:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:TextBox ID="TextBoxMaxDataRateWireless" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="lblMaxTransmitPowerWireless" AssociatedControlID="TextBoxMaxTransmitPowerWireless" Text="Maximum Transmit Power:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:TextBox ID="TextBoxMaxTransmitPowerWireless" TextMode="Number" runat="server"></asp:TextBox> (dBm)
+
+                    <asp:Label ID="lblDatasheetWireless" AssociatedControlID="TextBoxDatasheetWireless" Text="Datasheet:" runat="server" ValidateRequestMode="Enabled" />
+                    <asp:TextBox ID="TextBoxDatasheetWireless" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="col-md-12 aligncenter">
+                <asp:Button ID="ButtonWireless" CssClass=" btn btn-default" runat="server" Text="Add Product" OnClick="SubmitWireless" />
+            </div>
+        </div>    
+            </div>   
         </div>
-   </div>         
-                
-
+    </div>
 </asp:Content>
 

@@ -7,13 +7,15 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.IO;
 
+
+
 public partial class AddProduct : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
-
 
     protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -57,7 +59,6 @@ public partial class AddProduct : System.Web.UI.Page
             addWireless.Visible = false;
         }
     }
-
 
     protected void SubmitSwitch(object sender, EventArgs e)
     {
@@ -158,7 +159,6 @@ public partial class AddProduct : System.Web.UI.Page
 
     }
 
-
     protected void SubmitRouter(object sender, EventArgs e)
     {
         String catid, series, serial, model, gbports, onehundredports, oneguplinks, tenguplinks, softwarefeature, forwardingcapacity, ram, flash, formfactor, nim, esm, usbports, redundantpowersupply, ipsec, ospf, isis, bgp, eigrp, espslots, airflow, datasheet, sql;
@@ -170,7 +170,7 @@ public partial class AddProduct : System.Web.UI.Page
             serial = txtboxSerialRouter.Text;
             model = txtboxModelRouter.Text;
             gbports = txtboxGbPortsRouter.Text;
-            onehundredports = txtboxOneGUplinksRouter.Text;
+            onehundredports = txtboxonehundredportsRouter.Text;
             oneguplinks = txtboxOneGUplinksRouter.Text;
             tenguplinks = txtboxTenGUplinksRouter.Text;
             softwarefeature = txtboxSoftwareFeatureRouter.Text;
