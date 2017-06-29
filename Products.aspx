@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Products.aspx.cs" Inherits="Products" %>
 
 <asp:Content ID="ContentProducts" ContentPlaceHolderID="MainContent" Runat="Server" >
-    
+  
     <div class="prodcategs mb35 row" runat="server">
         <asp:Repeater ID="RepeaterProducts" runat="Server" DataSourceID="sqlDataSourceProductCategories">
             <ItemTemplate>
@@ -313,7 +313,10 @@
                 </tr>
             </tbody>
         </table>
-        <asp:GridView ID="GridViewRouters" runat="server" CssClass="fixedTable" DataSourceID="sqlDataSourceGridViewRouters" AutoGenerateColumns="False" GridLines="None" ShowHeader="False" DataKeyNames="Id">
+        <asp:GridView ID="GridViewRouters" runat="server" 
+            DataSourceID="sqlDataSourceGridViewRouters" 
+            AutoGenerateColumns="False" GridLines="None" ShowHeader="false" DataKeyNames="Id" CssClass="fixedTable">
+
             <Columns>
                 <asp:BoundField ItemStyle-CssClass="smallCell" DataField="CatId" HeaderText="CatId" SortExpression="CatId" ></asp:BoundField>
                 <asp:BoundField ItemStyle-CssClass="largeCell" DataField="Series" HeaderText="Series" SortExpression="Series" ></asp:BoundField>
@@ -324,12 +327,33 @@
                 <asp:BoundField ItemStyle-CssClass="mediumCell" DataField="ForwardingCapacity" HeaderText="ForwardingCapacity" SortExpression="ForwardingCapacity" ></asp:BoundField>
                 <asp:BoundField ItemStyle-CssClass="smallCell" DataField="RAM" HeaderText="RAM" SortExpression="RAM" ></asp:BoundField>
                 <asp:BoundField ItemStyle-CssClass="smallCell" DataField="Flash" HeaderText="Flash" SortExpression="Flash" ></asp:BoundField>
-                <asp:BoundField ItemStyle-CssClass="mediumCell" DataField="NIM" HeaderText="NIM" SortExpression="NIM" ></asp:BoundField>
-                <asp:BoundField ItemStyle-CssClass="mediumCell" DataField="ESM" HeaderText="ESM" SortExpression="ESM" />
-                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="FormFactor" HeaderText="FormFactor" SortExpression="FormFactor" />
+                <asp:BoundField ItemStyle-CssClass="mediumCell" DataField="NIM" HeaderText="NIM" SortExpression="NIM" />
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="ESM" HeaderText="ESM" SortExpression="ESM" />
+                <asp:BoundField ItemStyle-CssClass="smallCell" DataField="FormFactor" HeaderText="Form Factor" SortExpression="FormFactor" />
                 <asp:HyperLinkField ItemStyle-CssClass="mediumCell" DataNavigateUrlFields="Datasheet" DataTextField="Datasheet" DataTextFormatString="Datasheet" />
             </Columns>
+
         </asp:GridView>
+
+        <asp:SqlDataSource ID="sqlDataSourceGridViewRouters" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            SelectCommand="SELECT * FROM [Products] WHERE CatId = @CategoryId" 
+            FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([OneGUplinks], 'System.String') like '{2}%' and Convert([TenGUplinks], 'System.String') like '{3}%' and [RAM] like '{4}%' and [Flash] like '{5}%' and Convert([NIM], 'System.String') like '{6}%' and [ESM] like '{7}%' and [FormFactor] like '{8}%'">
+            <FilterParameters>
+                <asp:ControlParameter ControlID="ddlSeriesRouter" Name="Series" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlModelRouter" Name="Model" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlOneGbUplinksRouter" Name="OneGUplinks" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlTenGbUplinksRouter" Name="TenGUplinks" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlRAMRouter" Name="RAM" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlFlashRouter" Name="Flash" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlNIMRouter" Name="NIM" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlESMRouter" Name="ESM" PropertyName="SelectedValue" Type="String" />
+                <asp:ControlParameter ControlID="ddlFormFactorRouter" Name="FormFactor" PropertyName="SelectedValue" Type="String" />
+            </FilterParameters>
+            <SelectParameters>
+                <asp:Parameter Name="CategoryId" Type="Int32"/>
+            </SelectParameters>
+        </asp:SqlDataSource>
 
         <div>
             <asp:SqlDataSource ID="sqlDataSoruceSeriesRouter" runat="server" 
@@ -404,25 +428,7 @@
                 </SelectParameters>
             </asp:SqlDataSource>
 
-            <asp:SqlDataSource ID="sqlDataSourceGridViewRouters" runat="server" 
-                ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-                SelectCommand="SELECT [Id], [CatId], [Series], [Model], [Serial], [OneGUplinks], [TenGUplinks], [ForwardingCapacity], [RAM], [Flash], [NIM], [ESM], [FormFactor], [Datasheet] FROM [Products] where CatId = @CategoryId" 
-                FilterExpression="[Series] like '{0}%' and [Model] like '{1}%' and Convert([OneGUplinks], 'System.String') like '{2}%' and Convert([TenGUplinks], 'System.String') like '{3}%' and [RAM] like '{4}%' and [Flash] like '{5}%' and Convert([NIM], 'System.String') like '{6}%' and [ESM] like '{7}%' and [FormFactor] like '{8}%'">
-                <FilterParameters>
-                    <asp:ControlParameter ControlID="ddlSeriesRouter" Name="Series" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlModelRouter" Name="Model" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlOneGbUplinksRouter" Name="OneGUplinks" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlTenGbUplinksRouter" Name="TenGUplinks" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlRAMRouter" Name="RAM" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlFlashRouter" Name="Flash" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlNIMRouter" Name="NIM" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlESMRouter" Name="ESM" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter ControlID="ddlFormFactorRouter" Name="FormFactor" PropertyName="SelectedValue" Type="String" />
-                </FilterParameters>
-                 <SelectParameters>
-                    <asp:Parameter Name="CategoryId" Type="Int32"/>
-                  </SelectParameters>
-            </asp:SqlDataSource>
+            
         </div>
         
         <asp:GridView ID="GridViewRoutersCont" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceRoutersCont" DataKeyNames="CatId" ShowHeader="true" GridLines="None" CssClass="fixedTable productTable">
@@ -990,5 +996,5 @@
         </div>
     </div>
 
-</asp:Content>
 
+</asp:Content>

@@ -89,7 +89,6 @@ public partial class Products : System.Web.UI.Page
                             sqlDataSourceNIMRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceESMRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
                             sqlDataSourceFormFactorRouter.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
-                            SqlDataSourceRoutersCont.SelectParameters["CategoryId"].DefaultValue = categoryId + "";
             }
                     else
                         if (categoryName == "Servers")

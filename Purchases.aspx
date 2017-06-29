@@ -20,13 +20,13 @@
             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SqlDataSourcePurchase"  GridLines="None"> 
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                 <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="True" />
-                    <asp:BoundField DataField="ClientName" HeaderText="ClientName" SortExpression="ClientName" />
-                    <asp:BoundField DataField="ProductModel" HeaderText="ProductModel" SortExpression="ProductModel" />
-                    <asp:BoundField DataField="PurchaseDate" HeaderText="PurchaseDate" SortExpression="PurchaseDate" />
+                    <asp:BoundField DataField="id" HeaderText="Id" SortExpression="id" InsertVisible="False" ReadOnly="True" />
+                    <asp:BoundField DataField="ClientName" HeaderText="Client Name" SortExpression="ClientName" />
+                    <asp:BoundField DataField="ProductModel" HeaderText="Product Model" SortExpression="ProductModel" />
+                    <asp:BoundField DataField="PurchaseDate" HeaderText="Purchase Date" SortExpression="PurchaseDate" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
-                    <asp:BoundField DataField="SupportType" HeaderText="SupportType" SortExpression="SupportType" />
-                    <asp:BoundField DataField="SupportEndDate" HeaderText="SupportEndDate" SortExpression="SupportEndDate" />
+                    <asp:BoundField DataField="SupportType" HeaderText="Support Type" SortExpression="SupportType" />
+                    <asp:BoundField DataField="SupportEndDate" HeaderText="Support End Date" SortExpression="SupportEndDate" DataFormatString="{0:d}" />
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
                             <asp:LinkButton ID="EditButton"
