@@ -263,6 +263,64 @@ public partial class AddProduct : System.Web.UI.Page
         }
     }
 
+    protected void SubmitServer(object sender, EventArgs e)
+    {
+        String catid, series, serial, model, formfactor, memoryslots, mezanineadapterslots, diskdrives, maxinternalstorage, ucsmanager, datasheet, sql;
+
+        try
+        {
+            catid = ddlCategory.SelectedValue;
+            series = TextBoxSeriesServer.Text;
+            serial = TextBoxSerialServer.Text;
+            model = TextBoxModelServer.Text;
+            formfactor = DropDownListFormFactorServer.SelectedValue;
+            memoryslots = TextBoxMemorySlotsServer.Text;
+            mezanineadapterslots = TextBoxMezzanineServer.Text;
+            diskdrives = TextBoxDiskDrivesServer.Text;
+            maxinternalstorage = TextBoxMaximumInternalStorageServer.Text;
+            ucsmanager = DropDownListUCSDirectorServer.SelectedValue;
+            datasheet = TextBoxDatasheetServer.Text;
+
+            sql = "INSERT INTO Products (catid, series, serial, model, formfactor, memoryslots, mezanineadapterslots, diskdrives, maxinternalstorage, ucsmanager, datasheet) VALUES (@catid, @series, @serial, @model, @formfactor, @memoryslots, @mezanineadapterslots, @diskdrives, @maxinternalstorage, @ucsmanager, @datasheet)";
+            SqlConnection sqlconnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\ProjectCronus\App_Data\Database.mdf;Integrated Security=True");
+            sqlconnection.Open();
+            SqlCommand sqlcomm = new SqlCommand(sql, sqlconnection);
+            sqlcomm.Parameters.AddWithValue("catid", catid);
+            sqlcomm.Parameters.AddWithValue("series", series);
+            sqlcomm.Parameters.AddWithValue("serial", serial);
+            sqlcomm.Parameters.AddWithValue("model", model);
+            sqlcomm.Parameters.AddWithValue("formfactor", formfactor);
+            sqlcomm.Parameters.AddWithValue("memoryslots", memoryslots);
+            sqlcomm.Parameters.AddWithValue("mezanineadapterslots", mezanineadapterslots);
+            sqlcomm.Parameters.AddWithValue("diskdrives", diskdrives);
+            sqlcomm.Parameters.AddWithValue("maxinternalstorage", maxinternalstorage);
+            sqlcomm.Parameters.AddWithValue("ucsmanager", ucsmanager);
+            sqlcomm.Parameters.AddWithValue("datasheet", datasheet);
+
+            sqlcomm.ExecuteNonQuery();
+            sqlconnection.Close();
+
+
+            ddlCategory.SelectedIndex = 0;
+            TextBoxSeriesServer.Text = "";
+            TextBoxSerialServer.Text = "";
+            TextBoxModelServer.Text = "";
+            DropDownListFormFactorServer.SelectedValue = "Half-width";
+            TextBoxMemorySlotsServer.Text = "";
+            TextBoxMezzanineServer.Text = "";
+            TextBoxDiskDrivesServer.Text = "";
+            TextBoxMaximumInternalStorageServer.Text = "";
+            DropDownListUCSDirectorServer.SelectedValue = "Yes";
+            TextBoxDatasheetServer.Text = "";
+
+            PageResponse.InnerHtml = "Product added";
+        }
+        catch (Exception ex)
+        {
+            PageResponse.InnerHtml = "Something went wrong." + ex.Message + "<br>" + ex.Source;
+        }
+    }
+
     protected void SubmitWireless(object sender, EventArgs e)
     {
         String catid, series, serial, model, type, gbports, poe, poepower, protocoln, protocolac, protocolacwave, spectrum1, spectrum2, mimo, spatialstreams, maxdatarate, maxtransmitpower, datasheet, sql;

@@ -253,6 +253,51 @@
 	            <div class="col-md-12">
                     <h1>Add Server</h1>
                 </div>
+                <div class="col-md-4">
+                    
+                    <asp:Label ID="LabelSeriesServer" AssociatedControlID="TextBoxSeriesServer" runat="server" Text="Series"></asp:Label>
+                    <asp:TextBox ID="TextBoxSeriesServer" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorSeriesServer" ControlToValidate="TextBoxSeriesServer" CssClass="RequiredFieldValidator" runat="server" ErrorMessage="*Incorect Series"></asp:RequiredFieldValidator>
+
+                    <asp:Label ID="LabelModelServer" AssociatedControlID="TextBoxModelServer" runat="server" Text="Model"></asp:Label>
+                    <asp:TextBox ID="TextBoxModelServer" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorModelServer" ControlToValidate="TextBoxModelServer" CssClass="RequiredFieldValidator" runat="server" ErrorMessage="*Incorect Model"></asp:RequiredFieldValidator>
+
+                    <asp:Label ID="LabelSerialServer" AssociatedControlID="TextBoxSerialServer" runat="server" Text="Serial"></asp:Label>
+                    <asp:TextBox ID="TextBoxSerialServer" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorSerialServer" ControlToValidate="TextBoxSerialServer" CssClass="RequiredFieldValidator" runat="server" ErrorMessage="*Incorect Serial"></asp:RequiredFieldValidator>
+
+                    <asp:Label ID="LabelFormFactorServer" AssociatedControlID="DropDownListFormFactorServer" runat="server" Text="Form Factor"></asp:Label>
+                    <asp:DropDownList ID="DropDownListFormFactorServer" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Half-width</asp:ListItem>
+                        <asp:ListItem>Full-width</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label ID="LabelMemorySlotsServer" AssociatedControlID="TextBoxMemorySlotsServer" runat="server" Text="Memory Slots"></asp:Label>
+                    <asp:TextBox ID="TextBoxMemorySlotsServer" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="LabelMezzanineServer" AssociatedControlID="TextBoxMezzanineServer" runat="server" Text="Mezanine Adapter Slots"></asp:Label>
+                    <asp:TextBox ID="TextBoxMezzanineServer" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="LabelDiskDrivesServer" AssociatedControlID="TextBoxDiskDrivesServer" runat="server" Text="Disk Drives"></asp:Label>
+                    <asp:TextBox ID="TextBoxDiskDrivesServer" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="LabelMaximumInternalStorageServer" AssociatedControlID="TextBoxMaximumInternalStorageServer" runat="server" Text="Maximum Internal Storage"></asp:Label>
+                    <asp:TextBox ID="TextBoxMaximumInternalStorageServer" runat="server"></asp:TextBox>
+
+                    <asp:Label ID="LabelUCSDirectorServer" AssociatedControlID="DropDownListUCSDirectorServer" runat="server" Text="UCS Director"></asp:Label>
+                    <asp:DropDownList ID="DropDownListUCSDirectorServer" CssClass="ddlOption" runat="server">
+                        <asp:ListItem>Yes</asp:ListItem>
+                        <asp:ListItem>No</asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Label ID="LabelDatasheetServer" AssociatedControlID="TextBoxDatasheetServer" runat="server" Text="Datasheet"></asp:Label>
+                    <asp:TextBox ID="TextBoxDatasheetServer" runat="server"></asp:TextBox>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-4 ">
+                <asp:Button ID="ButtonServer" CssClass=" btn btn-default" runat="server" Text="Add Product" OnClick="SubmitServer" />
+            </div>
             </div>
         </div>
 
